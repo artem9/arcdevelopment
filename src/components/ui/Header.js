@@ -77,7 +77,7 @@ const useStyles = makeStyles()((theme) => {
       [theme.breakpoints.down('md')]: {
         height: '6em',
       },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         height: '5.5em',
       },
     },
@@ -121,6 +121,7 @@ const useStyles = makeStyles()((theme) => {
 });
 
 export default function Header(props) {
+  const { selectedIndex, setSelectedIndex, value, setValue } = props;
   const { classes } = useStyles();
   const theme = useTheme();
   const iOS =
@@ -129,10 +130,8 @@ export default function Header(props) {
 
   const [openDrawer, setOpenDrawer] = useState(false);
   const matches = useMediaQuery(theme.breakpoints.down('md'));
-  const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
@@ -212,7 +211,7 @@ export default function Header(props) {
           break;
       }
     });
-  }, [value, menuOptions, routes, selectedIndex]);
+  }, [value, menuOptions, routes, selectedIndex, setValue, setSelectedIndex]);
 
   const tabs = (
     <React.Fragment>
