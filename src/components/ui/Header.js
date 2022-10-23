@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
@@ -34,94 +35,91 @@ function ElevationScroll(props) {
   });
 }
 
-const useStyles = makeStyles()((theme) => {
-  return {
-    appBar: {
-      zIndex: theme.zIndex.modal + 1,
+const useStyles = makeStyles()((theme) => ({
+  appBar: {
+    zIndex: theme.zIndex.modal + 1,
+  },
+  button: {
+    ...theme.typography.estimate,
+    borderRadius: '50px',
+    marginLeft: '50px',
+    marginRight: '25px',
+    height: '45px',
+  },
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
+  drawerIcon: {
+    height: '50px',
+    width: '50px',
+  },
+  drawerIconContainer: {
+    marginLeft: 'auto',
+    '&:hover': {
+      backgroundColor: 'transparent',
     },
-    button: {
-      ...theme.typography.estimate,
-      borderRadius: '50px',
-      marginLeft: '50px',
-      marginRight: '25px',
-      height: '45px',
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: 'white',
+    opacity: 0.7,
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange,
+  },
+  drawerItemSelected: {
+    '& .MuiListItemText-root': {
+      opacity: 1,
     },
-    drawer: {
-      backgroundColor: theme.palette.common.blue,
+  },
+  logo: {
+    height: '7em',
+    [theme.breakpoints.down('md')]: {
+      height: '6em',
     },
-    drawerIcon: {
-      height: '50px',
-      width: '50px',
+    [theme.breakpoints.down('sm')]: {
+      height: '5.5em',
     },
-    drawerIconContainer: {
-      marginLeft: 'auto',
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
+  },
+  logoContainer: {
+    padding: 0,
+    '&:hover': {
+      backgroundColor: 'transparent',
     },
-    drawerItem: {
-      ...theme.typography.tab,
-      color: 'white',
-      opacity: 0.7,
+  },
+  menu: {
+    backgroundColor: theme.palette.common.blue,
+    color: 'white',
+    borderRadius: '0px',
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    '&:hover': {
+      opacity: 1,
     },
-    drawerItemEstimate: {
-      backgroundColor: theme.palette.common.orange,
+  },
+  tab: {
+    ...theme.typography.tab,
+    minWidth: 10,
+    marginLeft: '25px',
+  },
+  tabContainer: {
+    marginLeft: 'auto',
+  },
+  toolbarMargin: {
+    ...theme.mixins.toolbar,
+    marginBottom: '2em',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '1.5em',
     },
-    drawerItemSelected: {
-      '& .MuiListItemText-root': {
-        opacity: 1,
-      },
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '1.25em',
     },
-    logo: {
-      height: '7em',
-      [theme.breakpoints.down('md')]: {
-        height: '6em',
-      },
-      [theme.breakpoints.down('sm')]: {
-        height: '5.5em',
-      },
-    },
-    logoContainer: {
-      padding: 0,
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
-    },
-    menu: {
-      backgroundColor: theme.palette.common.blue,
-      color: 'white',
-      borderRadius: '0px',
-    },
-    menuItem: {
-      ...theme.typography.tab,
-      opacity: 0.7,
-      '&:hover': {
-        opacity: 1,
-      },
-    },
-    tab: {
-      ...theme.typography.tab,
-      minWidth: 10,
-      marginLeft: '25px',
-    },
-    tabContainer: {
-      marginLeft: 'auto',
-    },
-    toolbarMargin: {
-      ...theme.mixins.toolbar,
-      marginBottom: '2em',
-      [theme.breakpoints.down('md')]: {
-        marginBottom: '1.5em',
-      },
-      [theme.breakpoints.down('xs')]: {
-        marginBottom: '1.25em',
-      },
-    },
-  };
-});
+  },
+}));
 
-export default function Header(props) {
-  const { selectedIndex, setSelectedIndex, value, setValue } = props;
+function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
   const { classes } = useStyles();
   const theme = useTheme();
   const iOS =
@@ -148,7 +146,7 @@ export default function Header(props) {
     setSelectedIndex(index);
   };
 
-  const handleClose = (e) => {
+  const handleClose = () => {
     setAnchorEl(null);
     setOpenMenu(false);
   };
@@ -214,7 +212,7 @@ export default function Header(props) {
   }, [value, menuOptions, routes, selectedIndex, setValue, setSelectedIndex]);
 
   const tabs = (
-    <React.Fragment>
+    <>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -274,11 +272,11 @@ export default function Header(props) {
           </MenuItem>
         ))}
       </Menu>
-    </React.Fragment>
+    </>
   );
 
   const drawer = (
-    <React.Fragment>
+    <>
       <SwipeableDrawer
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
@@ -287,7 +285,7 @@ export default function Header(props) {
         onOpen={() => setOpenDrawer(true)}
         classes={{ paper: classes.drawer }}
       >
-        <div className={classes.toolbarMargin}></div>
+        <div className={classes.toolbarMargin} />
         <List disablePadding>
           {routes.map((route) => (
             <ListItemButton
@@ -334,11 +332,11 @@ export default function Header(props) {
       >
         <MenuIcon className={classes.drawerIcon} />
       </IconButton>
-    </React.Fragment>
+    </>
   );
 
   return (
-    <React.Fragment>
+    <>
       <ElevationScroll>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar disableGutters>
@@ -355,7 +353,16 @@ export default function Header(props) {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <div className={classes.toolbarMargin}></div>
-    </React.Fragment>
+      <div className={classes.toolbarMargin} />
+    </>
   );
 }
+
+Header.propTypes = {
+  selectedIndex: PropTypes.number.isRequired,
+  setSelectedIndex: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
+  setValue: PropTypes.func.isRequired,
+}
+
+export default Header;

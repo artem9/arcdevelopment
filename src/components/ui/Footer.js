@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { makeStyles } from 'tss-react/mui';
 
 import Grid from '@mui/material/Grid';
@@ -11,58 +12,55 @@ import facebook from '../../assets/facebook.svg';
 import twitter from '../../assets/twitter.svg';
 import instagram from '../../assets/instagram.svg';
 
-const useStyles = makeStyles()((theme) => {
-  return {
-    adornment: {
-      width: '25em',
-      verticalAlign: 'bottom',
-      [theme.breakpoints.down('md')]: {
-        width: '21em',
-      },
-      [theme.breakpoints.down('sm')]: {
-        width: '15em',
-      },
+const useStyles = makeStyles()((theme) => ({
+  adornment: {
+    width: '25em',
+    verticalAlign: 'bottom',
+    [theme.breakpoints.down('md')]: {
+      width: '21em',
     },
-    icon: {
-      height: '4em',
-      width: '4em',
-      [theme.breakpoints.down('sm')]: {
-        height: '2.5em',
-        width: '2.5em',
-      },
+    [theme.breakpoints.down('sm')]: {
+      width: '15em',
     },
-    footer: {
-      backgroundColor: theme.palette.common.blue,
-      width: '100%',
-      zIndex: 1302,
-      position: 'relative',
+  },
+  icon: {
+    height: '4em',
+    width: '4em',
+    [theme.breakpoints.down('sm')]: {
+      height: '2.5em',
+      width: '2.5em',
     },
-    gridItem: {
-      margin: '3em',
+  },
+  footer: {
+    backgroundColor: theme.palette.common.blue,
+    width: '100%',
+    zIndex: 1302,
+    position: 'relative',
+  },
+  gridItem: {
+    margin: '3em',
+  },
+  link: {
+    color: 'white',
+    fontFamily: 'Arial',
+    fontSize: '0.75rem',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+  },
+  mainContainer: {
+    position: 'absolute',
+  },
+  socialContainer: {
+    position: 'absolute',
+    marginTop: '-6em',
+    right: '1.5em',
+    [theme.breakpoints.down('sm')]: {
+      right: '0.6em',
     },
-    link: {
-      color: 'white',
-      fontFamily: 'Arial',
-      fontSize: '0.75rem',
-      fontWeight: 'bold',
-      textDecoration: 'none',
-    },
-    mainContainer: {
-      position: 'absolute',
-    },
-    socialContainer: {
-      position: 'absolute',
-      marginTop: '-6em',
-      right: '1.5em',
-      [theme.breakpoints.down('sm')]: {
-        right: '0.6em',
-      },
-    },
-  };
-});
+  },
+}));
 
-export default function Footer(props) {
-  const { setValue, setSelectedIndex } = props;
+function Footer({ setValue, setSelectedIndex }) {
   const { classes } = useStyles();
   const theme = useTheme();
   const hidden = useMediaQuery(theme.breakpoints.down('md'));
@@ -241,7 +239,7 @@ export default function Footer(props) {
       >
         <Grid
           item
-          component={'a'}
+          component="a"
           href="http://www.facebook.com"
           rel="noopener noreferrer"
           target="_blank"
@@ -250,7 +248,7 @@ export default function Footer(props) {
         </Grid>
         <Grid
           item
-          component={'a'}
+          component="a"
           href="http://www.twitter.com"
           rel="noopener noreferrer"
           target="_blank"
@@ -259,7 +257,7 @@ export default function Footer(props) {
         </Grid>
         <Grid
           item
-          component={'a'}
+          component="a"
           href="http://www.instagram.com"
           rel="noopener noreferrer"
           target="_blank"
@@ -270,3 +268,10 @@ export default function Footer(props) {
     </footer>
   );
 }
+
+Footer.propTypes = {
+  setValue: PropTypes.func.isRequired,
+  setSelectedIndex: PropTypes.func.isRequired,
+}
+
+export default Footer;

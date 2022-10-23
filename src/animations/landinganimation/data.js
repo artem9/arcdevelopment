@@ -1,8 +1,8 @@
-import img_0 from "./img_0.png";
-import img_1 from "./img_1.png";
-import img_2 from "./img_2.png";
-import img_3 from "./img_3.png";
-import img_4 from "./img_4.png";
+import img0 from "./img_0.png";
+import img1 from "./img_1.png";
+import img2 from "./img_2.png";
+import img3 from "./img_3.png";
+import img4 from "./img_4.png";
 
 export default {
   v: "5.5.5",
@@ -19,7 +19,7 @@ export default {
       w: 173,
       h: 172,
       u: "",
-      p: img_0,
+      p: img0,
       e: 0
     },
     {
@@ -27,7 +27,7 @@ export default {
       w: 204,
       h: 154,
       u: "",
-      p: img_1,
+      p: img1,
       e: 0
     },
     {
@@ -35,7 +35,7 @@ export default {
       w: 182,
       h: 182,
       u: "",
-      p: img_2,
+      p: img2,
       e: 0
     },
     {
@@ -43,7 +43,7 @@ export default {
       w: 233,
       h: 89,
       u: "",
-      p: img_3,
+      p: img3,
       e: 0
     },
     {
@@ -51,7 +51,7 @@ export default {
       w: 1083,
       h: 366,
       u: "",
-      p: img_4,
+      p: img4,
       e: 0
     }
   ],
