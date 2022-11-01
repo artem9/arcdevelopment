@@ -122,7 +122,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 component={Link}
                 to="/mobileapps"
               >
-                Mobile App Development
+                iOS/Android App Development
               </Grid>
               <Grid
                 item
@@ -272,6 +272,6 @@ function Footer({ setValue, setSelectedIndex }) {
 Footer.propTypes = {
   setValue: PropTypes.func.isRequired,
   setSelectedIndex: PropTypes.func.isRequired,
-}
+};
 
 export default Footer;

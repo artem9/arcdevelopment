@@ -46,8 +46,8 @@ const useStyles = makeStyles()((theme) => ({
     marginRight: '25px',
     height: '45px',
     '&:hover': {
-      backgroundColor: theme.palette.secondary.light
-    }
+      backgroundColor: theme.palette.secondary.light,
+    },
   },
   drawer: {
     backgroundColor: theme.palette.common.blue,
@@ -164,7 +164,7 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
         selectedIndex: 1,
       },
       {
-        name: 'Mobile App Development',
+        name: 'iOS/Android App Development',
         link: '/mobileapps',
         activeIndex: 1,
         selectedIndex: 2,
@@ -366,6 +366,6 @@ Header.propTypes = {
   setSelectedIndex: PropTypes.func.isRequired,
   value: PropTypes.number.isRequired,
   setValue: PropTypes.func.isRequired,
-}
+};
 
 export default Header;
