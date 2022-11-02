@@ -8,14 +8,14 @@ export default createTheme({
   palette: {
     common: {
       blue: arcBlue,
-      orange: arcOrange
+      orange: arcOrange,
     },
     primary: {
-      main: arcBlue
+      main: arcBlue,
     },
     secondary: {
-      main: arcOrange
-    }
+      main: arcOrange,
+    },
   },
   typography: {
     tab: {
@@ -29,7 +29,7 @@ export default createTheme({
       fontFamily: 'Pacifico',
       fontSize: '1rem',
       textTransform: 'none',
-      color: '#fff'
+      color: '#fff',
     },
     learnButton: {
       borderColor: arcBlue,
@@ -45,18 +45,28 @@ export default createTheme({
       fontWeight: 700,
       fontSize: '2.5rem',
       color: arcBlue,
-      lineHeight: 1.5
+      lineHeight: 1.5,
+    },
+    h3: {
+      fontFamily: 'Pacifico',
+      fontSize: '2.5rem',
+      color: arcBlue,
     },
     h4: {
       fontFamily: 'Raleway',
       fontSize: '1.75rem',
       color: arcBlue,
-      fontWeight: 700
+      fontWeight: 700,
     },
     subtitle1: {
       fontSize: '1.25rem',
       fontWeight: 300,
-      color: arcGrey
-    }
-  }
+      color: arcGrey,
+    },
+    subtitle2: {
+      color: 'white',
+      fontSize: '1.25rem',
+      fontWeight: 300,
+    },
+  },
 });
