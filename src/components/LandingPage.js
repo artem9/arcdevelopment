@@ -11,6 +11,8 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import { makeStyles } from 'tss-react/mui';
 
+import CallToAction from './ui/CallToAction';
+
 import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
 import mobileAppsIcon from '../assets/mobileIcon.svg';
@@ -129,6 +131,7 @@ export default function LandingPage() {
   const { classes } = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   const element = useRef(null);
   const lottieEnstance = useRef();
@@ -372,28 +375,79 @@ export default function LandingPage() {
           style={{ height: '90em' }}
           alignItems="center"
         >
-          <Grid item style={{ position: 'absolute', marginLeft: '5em' }}>
-            <Grid container direction="column">
-              <Typography variant="h2" style={{ color: 'white' }}>
-                About Us
-              </Typography>
-              <Typography variant="subtitle2">
-                Let&apos;s get personal.
-              </Typography>
-              <Grid item>
-                <Button
-                  variant="outlined"
-                  style={{ color: 'white', borderColor: 'white' }}
-                  className={classes.learnButtonHero}
-                >
-                  <span style={{ marginRight: 10 }}>Learn More</span>
-                  <ButtonArrow width={15} height={15} fill="white" />
-                </Button>
+          <Grid
+            item
+            container
+            style={{
+              position: 'absolute',
+              textAlign: matchesSM ? 'center' : 'inherit',
+            }}
+            direction={matchesSM ? 'column' : 'row'}
+            spacing={matchesSM ? 10 : 0}
+          >
+            <Grid
+              item
+              sm
+              // eslint-disable-next-line no-nested-ternary
+              style={{ marginLeft: matchesSM ? 0 : matchesMD ? '2em' : '5em' }}
+            >
+              <Grid container direction="column">
+                <Typography variant="h2" style={{ color: 'white' }}>
+                  About Us
+                </Typography>
+                <Typography variant="subtitle2">
+                  Let&apos;s get personal.
+                </Typography>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    style={{ color: 'white', borderColor: 'white' }}
+                    className={classes.learnButtonHero}
+                  >
+                    <span style={{ marginRight: 10 }}>Learn More</span>
+                    <ButtonArrow width={15} height={15} fill="white" />
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              sm
+              style={{
+                // eslint-disable-next-line no-nested-ternary
+                marginRight: matchesSM ? 0 : matchesMD ? '2em' : '5em',
+                textAlign: matchesSM ? 'center' : 'right',
+              }}
+            >
+              <Grid container direction="column">
+                <Typography variant="h2" style={{ color: 'white' }}>
+                  Contact Us
+                </Typography>
+                <Typography variant="subtitle2">
+                  Say Hello!{' '}
+                  <span role="img" aria-label="waving hand">
+                    👋
+                  </span>
+                </Typography>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    style={{ color: 'white', borderColor: 'white' }}
+                    className={classes.learnButtonHero}
+                  >
+                    <span style={{ marginRight: 10 }}>Learn More</span>
+                    <ButtonArrow width={15} height={15} fill="white" />
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
           <div className={classes.infoBackground} />
         </Grid>
+      </Grid>
+      <Grid item>
+        {/* -----Call to Action Block----- */}
+        <CallToAction />
       </Grid>
     </Grid>
   );
