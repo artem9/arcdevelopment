@@ -21,7 +21,7 @@ function App() {
           setSelectedIndex={setSelectedIndex}
         />
         <Routes>
-          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/" element={<LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex} />} />
           <Route exact path="/services" element={<div>Services</div>} />
           <Route
             exact
@@ -36,9 +36,7 @@ function App() {
           <Route exact path="/estimate" element={<div>Estimate</div>} />
         </Routes>
         <Footer
-          value={value}
           setValue={setValue}
-          selectedIndex={selectedIndex}
           setSelectedIndex={setSelectedIndex}
         />
       </BrowserRouter>

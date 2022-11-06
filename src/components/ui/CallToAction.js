@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import useTheme from '@mui/material/styles/useTheme';
 
 import { makeStyles } from 'tss-react/mui';
@@ -12,6 +15,7 @@ import mobileBackground from '../../assets/mobileBackground.jpg';
 
 const useStyles = makeStyles()((theme) => ({
   background: {
+    backgroundAttachment: 'fixed',
     backgroundImage: `url(${background})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -20,6 +24,7 @@ const useStyles = makeStyles()((theme) => ({
     width: '100%',
     [theme.breakpoints.down('md')]: {
       backgroundImage: `url(${mobileBackground})`,
+      backgroundAttachment: 'inherit',
     },
   },
   estimateButton: {
@@ -30,8 +35,13 @@ const useStyles = makeStyles()((theme) => ({
     backgroundColor: theme.palette.common.orange,
     fontSize: '1.5rem',
     marginRight: '5em',
+    marginLeft: '2em',
     '&:hover': {
       backgroundColor: theme.palette.secondary.light,
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 0,
+      marginRight: 0,
     },
   },
   learnButton: {
@@ -45,18 +55,26 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-export default function CallToAction() {
+function CallToAction({ setValue }) {
   const { classes } = useStyles();
   const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Grid
       container
       alignItems="center"
-      justifyContent="space-between"
+      justifyContent={matchesMD ? 'center' : 'space-between'}
       className={classes.background}
+      direction={matchesMD ? 'column' : 'row'}
     >
-      <Grid item style={{ marginLeft: '5em' }}>
+      <Grid
+        item
+        style={{
+          marginLeft: matchesMD ? 0 : '5em',
+          textAlign: matchesMD ? 'center' : 'inherit',
+        }}
+      >
         <Grid container direction="column">
           <Grid item>
             <Typography variant="h2">
@@ -67,8 +85,18 @@ export default function CallToAction() {
             <Typography variant="subtitle2" style={{ fontSize: '1.5rem' }}>
               Take advantage of the 21st Century.
             </Typography>
-            <Grid container item>
-              <Button variant="outlined" className={classes.learnButton}>
+            <Grid
+              container
+              item
+              justifyContent={matchesMD ? 'center' : undefined}
+            >
+              <Button
+                variant="outlined"
+                className={classes.learnButton}
+                onClick={() => setValue(2)}
+                component={Link}
+                to="/revolution"
+              >
                 <span style={{ marginRight: 5 }}>Learn More</span>
                 <ButtonArrow
                   width={10}
@@ -81,10 +109,22 @@ export default function CallToAction() {
         </Grid>
       </Grid>
       <Grid item>
-        <Button variant="contained" className={classes.estimateButton}>
+        <Button
+          variant="contained"
+          className={classes.estimateButton}
+          onClick={() => setValue(5)}
+          component={Link}
+          to="/estimate"
+        >
           Free Estimate
         </Button>
       </Grid>
     </Grid>
   );
 }
+
+CallToAction.propTypes = {
+  setValue: PropTypes.func.isRequired,
+};
+
+export default CallToAction;

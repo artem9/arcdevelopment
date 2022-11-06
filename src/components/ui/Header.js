@@ -208,6 +208,9 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
             }
           }
           break;
+        case '/estimate':
+          setValue(5);
+          break;
         default:
           break;
       }
@@ -236,7 +239,14 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
           />
         ))}
       </Tabs>
-      <Button variant="contained" color="secondary" className={classes.button}>
+      <Button
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        component={Link}
+        to="/estimate"
+        onClick={() => setValue(false)}
+      >
         Free Estimate
       </Button>
       <Menu
