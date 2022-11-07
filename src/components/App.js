@@ -6,6 +6,7 @@ import Header from './ui/Header';
 import Footer from './ui/Footer';
 import theme from './ui/Theme';
 import LandingPage from './LandingPage';
+import Services from './Services';
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -21,8 +22,26 @@ function App() {
           setSelectedIndex={setSelectedIndex}
         />
         <Routes>
-          <Route exact path="/" element={<LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex} />} />
-          <Route exact path="/services" element={<div>Services</div>} />
+          <Route
+            exact
+            path="/"
+            element={
+              <LandingPage
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/services"
+            element={
+              <Services
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            }
+          />
           <Route
             exact
             path="/customsoftware"
@@ -35,10 +54,7 @@ function App() {
           <Route exact path="/contact" element={<div>Contact Us</div>} />
           <Route exact path="/estimate" element={<div>Estimate</div>} />
         </Routes>
-        <Footer
-          setValue={setValue}
-          setSelectedIndex={setSelectedIndex}
-        />
+        <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
     </ThemeProvider>
   );
