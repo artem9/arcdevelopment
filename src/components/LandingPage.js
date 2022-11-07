@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import lottie from 'lottie-web';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -13,6 +12,7 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import { makeStyles } from 'tss-react/mui';
 
+import Lottie from './ui/Lottie';
 import CallToAction from './ui/CallToAction';
 
 import ButtonArrow from './ui/ButtonArrow';
@@ -135,28 +135,6 @@ function LandingPage({ setValue, setSelectedIndex }) {
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const element = useRef(null);
-  const lottieEnstance = useRef();
-  const executeRef = useRef(false);
-
-  useEffect(() => {
-    if (executeRef.current) return;
-    if (element.current) {
-      lottieEnstance.current = lottie.loadAnimation({
-        container: element.current,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        animationData,
-        rendererSettings: {
-          preserveAspectRatio: 'xMinYMin slice',
-        },
-      });
-    }
-
-    executeRef.current = true;
-  }, []);
-
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item>
@@ -208,7 +186,12 @@ function LandingPage({ setValue, setSelectedIndex }) {
             </Grid>
           </Grid>
           <Grid sm item className={classes.animation}>
-            <div ref={element} style={{ height: '100%', width: '100%' }} />
+            <Lottie
+              animationData={animationData}
+              style={{ height: '100%', width: '100%' }}
+              autoplay
+              loop
+            />
           </Grid>
         </Grid>
       </Grid>
