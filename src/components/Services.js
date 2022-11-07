@@ -32,7 +32,7 @@ const useStyles = makeStyles()((theme) => ({
     },
   },
   serviceContainer: {
-    marginTop: '12em',
+    marginTop: '10em',
     [theme.breakpoints.down('sm')]: {
       padding: 25,
     },
@@ -53,6 +53,21 @@ function Services({ setValue, setSelectedIndex }) {
 
   return (
     <Grid container direction="column">
+      <Grid
+        item
+        style={{
+          marginLeft: matchesMD ? 0 : '5em',
+          marginTop: matchesMD ? '1em' : '2em',
+        }}
+      >
+        <Typography
+          variant="h2"
+          align={matchesMD ? 'center' : undefined}
+          gutterBottom
+        >
+          Services
+        </Typography>
+      </Grid>
       <Grid item>
         {/* -----iOS/Android Block----- */}
         <Grid
@@ -60,11 +75,13 @@ function Services({ setValue, setSelectedIndex }) {
           direction="row"
           className={classes.serviceContainer}
           justifyContent={matchesMD ? 'center' : 'flex-end'}
+          style={{ marginTop: matchesMD ? '1em' : '5em' }}
         >
           <Grid
             item
             style={{
               textAlign: matchesMD ? 'center' : undefined,
+              width: matchesMD ? undefined : '35em',
             }}
           >
             <Typography variant="h4">iOS/Android App Development</Typography>
@@ -103,6 +120,7 @@ function Services({ setValue, setSelectedIndex }) {
               className={classes.icon}
               alt="mobile phone icon"
               src={mobileAppsIcon}
+              width="250em"
             />
           </Grid>
         </Grid>
@@ -163,12 +181,14 @@ function Services({ setValue, setSelectedIndex }) {
           container
           direction="row"
           className={classes.serviceContainer}
+          style={{ marginBottom: '10em' }}
           justifyContent={matchesMD ? 'center' : 'flex-end'}
         >
           <Grid
             item
             style={{
               textAlign: matchesMD ? 'center' : undefined,
+              width: matchesMD ? undefined : '35em',
             }}
           >
             <Typography variant="h4">Website Development</Typography>
@@ -201,6 +221,7 @@ function Services({ setValue, setSelectedIndex }) {
               className={classes.icon}
               alt="website icon"
               src={websitesIcon}
+              width="250em"
             />
           </Grid>
         </Grid>
