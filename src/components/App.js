@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import Header from './ui/Header';
 import Footer from './ui/Footer';
 import theme from './ui/Theme';
+import CustomSoftware from './CustomSoftware';
 import LandingPage from './LandingPage';
 import Services from './Services';
 
@@ -45,7 +46,7 @@ function App() {
           <Route
             exact
             path="/customsoftware"
-            element={<div>Custom Software</div>}
+            element={<CustomSoftware setSelectedIndex={setSelectedIndex} />}
           />
           <Route exact path="/mobileapps" element={<div>Mobile Apps</div>} />
           <Route exact path="/websites" element={<div>Websites</div>} />

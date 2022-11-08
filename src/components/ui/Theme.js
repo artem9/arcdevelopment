@@ -18,12 +18,10 @@ export default createTheme({
     },
   },
   typography: {
-    tab: {
-      fontFamily: 'Raleway',
-      fontSize: '1rem',
-      fontWeight: 700,
-      color: '#fff',
-      textTransform: 'none',
+    body1: {
+      fontSize: '1.25rem',
+      color: arcGrey,
+      fontWeight: 300,
     },
     estimate: {
       fontFamily: 'Pacifico',
@@ -67,6 +65,13 @@ export default createTheme({
       color: 'white',
       fontSize: '1.25rem',
       fontWeight: 300,
+    },
+    tab: {
+      fontFamily: 'Raleway',
+      fontSize: '1rem',
+      fontWeight: 700,
+      color: '#fff',
+      textTransform: 'none',
     },
   },
 });

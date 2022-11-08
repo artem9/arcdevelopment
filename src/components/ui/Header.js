@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -18,7 +19,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
-import { IconButton } from '@mui/material';
 
 import logo from '../../assets/logo.svg';
 
