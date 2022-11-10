@@ -190,7 +190,6 @@ function LandingPage({ setValue, setSelectedIndex }) {
               animationData={animationData}
               style={{ height: '100%', width: '100%' }}
               autoplay
-              loop
             />
           </Grid>
         </Grid>

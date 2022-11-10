@@ -17,11 +17,17 @@ import lightbulb from '../assets/bulb.svg';
 import cash from '../assets/cash.svg';
 import stopwatch from '../assets/stopwatch.svg';
 
+import documentsAnimation from '../animations/documentsAnimation/data';
+import scaleAnimation from '../animations/scaleAnimation/data.json';
+
 const useStyles = makeStyles()((theme) => ({
   arrowContainer: {
     marginTop: '0.7em',
   },
   heading: {
+    maxWidth: '40em',
+  },
+  itemContainer: {
     maxWidth: '40em',
   },
   mainContainer: {
@@ -145,6 +151,60 @@ function CustomSoftware({ setSelectedIndex }) {
           </Grid>
           <Grid item>
             <img alt="cash" src={cash} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item container direction="row">
+        <Grid item container className={classes.itemContainer}>
+          <Grid item container md direction="column">
+            <Grid item>
+              <Typography variant="h4">Digtal Documents & Data</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1" paragraph>
+                Reduce Errors. Reduce Waste. Reduce Costs.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Billions are spent annually on the purchasing, printing, and
+                distribution of paper. On top of the massive enviromental impact
+                this has, it causes harm to your bottom line as well.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                By utilizing digital forms and documents you can remove these
+                obsolete expences, accelerate your communication, and help the
+                Earth.
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item md>
+            <Lottie
+              animationData={documentsAnimation}
+              style={{ maxHeight: 325, maxWidth: 275, minHeight: 275 }}
+              autoplay
+            />
+          </Grid>
+        </Grid>
+        <Grid item container className={classes.itemContainer}>
+          <Grid item md>
+            <Lottie
+              animationData={scaleAnimation}
+              style={{ maxHeight: 260, maxWidth: 280 }}
+              autoplay
+            />
+          </Grid>
+          <Grid item container md direction="column">
+            <Grid item>
+              <Typography variant="h4" align="right">
+                Scale
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1" align="right" paragraph>
+                Whether you&apos;re a large brand, just getting started, or
+                taking off right now, our application architecture ensures
+                pain-free growth and reliability.
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
