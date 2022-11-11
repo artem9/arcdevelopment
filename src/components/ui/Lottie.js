@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import PropTypes from 'prop-types';
 
-function Lottie({ animationData, autoplay, loop }) {
+function Lottie({ animationData, autoplay, loop, style }) {
   const element = useRef(null);
   const lottieInstance = useRef();
   const executeRef = useRef(false);
@@ -25,12 +25,13 @@ function Lottie({ animationData, autoplay, loop }) {
     executeRef.current = true;
   });
 
-  return <div ref={element} />;
+  return <div ref={element} style={style} />;
 }
 
 Lottie.defaultProps = {
   autoplay: false,
   loop: false,
+  style: undefined,
 };
 
 Lottie.propTypes = {
@@ -38,6 +39,9 @@ Lottie.propTypes = {
   animationData: PropTypes.any.isRequired,
   loop: PropTypes.bool,
   autoplay: PropTypes.bool,
+  style: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
 };
 
 export default Lottie;
