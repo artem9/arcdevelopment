@@ -7,6 +7,7 @@ import Footer from './ui/Footer';
 import theme from './ui/Theme';
 import CustomSoftware from './CustomSoftware';
 import LandingPage from './LandingPage';
+import MobileApps from './MobileApps';
 import Services from './Services';
 
 function App() {
@@ -53,7 +54,11 @@ function App() {
               />
             }
           />
-          <Route exact path="/mobileapps" element={<div>Mobile Apps</div>} />
+          <Route
+            exact
+            path="/mobileapps"
+            element={<MobileApps setSelectedIndex={setSelectedIndex} />}
+          />
           <Route exact path="/websites" element={<div>Websites</div>} />
           <Route exact path="/revolution" element={<div>The Revolution</div>} />
           <Route exact path="/about" element={<div>About Us</div>} />
