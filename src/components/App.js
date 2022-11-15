@@ -46,7 +46,12 @@ function App() {
           <Route
             exact
             path="/customsoftware"
-            element={<CustomSoftware setSelectedIndex={setSelectedIndex} />}
+            element={
+              <CustomSoftware
+                setSelectedIndex={setSelectedIndex}
+                setValue={setValue}
+              />
+            }
           />
           <Route exact path="/mobileapps" element={<div>Mobile Apps</div>} />
           <Route exact path="/websites" element={<div>Websites</div>} />
