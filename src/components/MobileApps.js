@@ -12,10 +12,15 @@ import useTheme from '@mui/material/styles/useTheme';
 import { makeStyles } from 'tss-react/mui';
 
 import Lottie from './ui/Lottie';
+import CallToAction from './ui/CallToAction';
 
+import access from '../assets/extendAccess.svg';
 import backArrow from '../assets/backArrow.svg';
+import engagement from '../assets/increaseEngagement.svg';
 import forwardArrow from '../assets/forwardArrow.svg';
-import integrationAnimation from '../animations/integrationAnimation/data.json';
+import swiss from '../assets/swissKnife.svg';
+
+import integrationAnimation from '../animations/integrationanimation/data.json';
 
 const useStyles = makeStyles()((theme) => ({
   arrowContainer: {
@@ -34,7 +39,7 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-function MobileApps({ setSelectedIndex }) {
+function MobileApps({ setSelectedIndex, setValue }) {
   const { classes } = useStyles();
   const theme = useTheme();
   const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
@@ -117,52 +122,144 @@ function MobileApps({ setSelectedIndex }) {
           </Grid>
         </Hidden>
       </Grid>
-      <Grid item container direction="row" className={classes.rowContainer}>
+      <Grid
+        item
+        container
+        direction={matchesMD ? 'column' : 'row'}
+        className={classes.rowContainer}
+        style={{ marginBottom: '15em', marginTop: '15em' }}
+      >
         <Grid item container direction="column" md>
           <Grid item>
-            <Typography variant="h4" gutterBottom>
+            <Typography
+              variant="h4"
+              align={matchesMD ? 'center' : undefined}
+              gutterBottom
+            >
               Integration
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesMD ? 'center' : undefined}
+              paragraph
+            >
               Our technology enables an innate interconnection between web and
               mobile applications, putting everything you need right in one
               convenient place.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesMD ? 'center' : undefined}
+              paragraph
+            >
               This allows you to extend your reach, reinvent interactions, and
               develop a stronger relationship with your users than ever before.
             </Typography>
           </Grid>
         </Grid>
         <Grid item md>
-          <Lottie animationData={integrationAnimation} autoplay />
+          <Grid item container direction="column" alignItems="center">
+            <Grid item>
+              <Lottie
+                animationData={integrationAnimation}
+                style={{ maxWidth: '20em' }}
+                autoplay
+              />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item container direction="column" md>
           <Grid item>
-            <Typography variant="h4" align="right" gutterBottom>
+            <Typography
+              variant="h4"
+              align={matchesMD ? 'center' : 'right'}
+              gutterBottom
+            >
               Simultaneous Platform Support
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" align="right" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesMD ? 'center' : 'right'}
+              paragraph
+            >
               Our cutting-edge development process allows us to create apps for
               iPhone, Android, and tablets - all at the same time.
             </Typography>
-            <Typography variant="body1" align="right" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesMD ? 'center' : 'right'}
+              paragraph
+            >
               This significantly reduces costs and creates a more unified brand
               experience across all devices.
             </Typography>
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        item
+        container
+        direction={matchesLG ? 'column' : 'row'}
+        className={classes.rowContainer}
+        style={{ marginBottom: '15em' }}
+      >
+        <Grid item container direction="column" alignItems="center" md>
+          <Grid item>
+            <Typography variant="h4" align="center" gutterBottom>
+              Extend Functionality
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={swiss} alt="swiss army knife" />
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems="center"
+          md
+          style={{
+            marginTop: matchesLG ? '10em' : 0,
+            marginBottom: matchesLG ? '10em' : 0,
+          }}
+        >
+          <Grid item>
+            <Typography variant="h4" align="center" gutterBottom>
+              Extend Access
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img
+              src={access}
+              alt="tear-one-off sign"
+              style={{ maxWidth: matchesSM ? '20em' : '28em' }}
+            />
+          </Grid>
+        </Grid>
+        <Grid item container direction="column" alignItems="center" md>
+          <Grid item>
+            <Typography variant="h4" align="center" gutterBottom>
+              Increase Engagement
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={engagement} alt="app with notification" />
+          </Grid>
+        </Grid>
+      </Grid>
+      <CallToAction setValue={setValue} />
     </Grid>
   );
 }
 
 MobileApps.propTypes = {
   setSelectedIndex: PropTypes.func.isRequired,
+  setValue: PropTypes.func.isRequired,
 };
 
 export default MobileApps;

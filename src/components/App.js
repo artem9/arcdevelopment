@@ -57,7 +57,12 @@ function App() {
           <Route
             exact
             path="/mobileapps"
-            element={<MobileApps setSelectedIndex={setSelectedIndex} />}
+            element={
+              <MobileApps
+                setSelectedIndex={setSelectedIndex}
+                setValue={setValue}
+              />
+            }
           />
           <Route exact path="/websites" element={<div>Websites</div>} />
           <Route exact path="/revolution" element={<div>The Revolution</div>} />
