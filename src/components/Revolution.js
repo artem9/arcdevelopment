@@ -8,6 +8,7 @@ import { makeStyles } from 'tss-react/mui';
 
 import Lottie from './ui/Lottie';
 
+import consultation from '../assets/consultationIcon.svg';
 import vision from '../assets/vision.svg';
 
 import technologyAnimation from '../animations/technologyAnimation/data.json';
@@ -155,53 +156,67 @@ export default function Revolution() {
         item
         container
         direction="row"
-        alignItems="center"
         className={classes.rowContainer}
+        justifyContent="center"
       >
-        <Grid item lg>
-          <img
-            src={vision}
-            alt="mountain through binoculars"
-            style={{ maxWidth: '40em', marginRight: '5em' }}
-          />
+        <Grid item>
+          <Typography variant="h4" gutterBottom>
+            Process
+          </Typography>
         </Grid>
-        <Grid item container direction="column" style={{ maxWidth: '40em' }} lg>
+      </Grid>
+      <Grid
+        item
+        container
+        direction="row"
+        className={classes.rowContainer}
+        style={{ backgroundColor: '#B3B3B3', height: '90em' }}
+      >
+        <Grid item container direction="column" lg>
           <Grid item>
-            <Typography variant="h4" align="right" gutterBottom>
-              Vision
+            <Typography
+              variant="h4"
+              gutterBottom
+              style={{ color: '#000', marginTop: '5em' }}
+            >
+              Consultation
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" align="right" paragraph>
-              The rise of computers, and subsequently the Internet, has
-              completely altered every aspect of human life. This has increased
-              our comfort, broadened our connections, and reshaped how we view
-              the world.
+            <Typography
+              variant="body1"
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              Our process begins the moment you realize you need a piece of
+              technology for your business. Whether you already have an idea for
+              where to start and what to do, or if you just know you want to
+              step things up, our initial consultation will help you examine
+              your business holistically to find the best solutions.
             </Typography>
-            <Typography variant="body1" align="right" paragraph>
-              What once was confined to huge rooms and teams of engineers now
-              resides in every single one of our hands. Harnessing this
-              unlimited potential by using it to solve problems and better lives
-              is at the heart of everything we do.
+            <Typography
+              variant="body1"
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              Detailed notes will be taken on your requirements and constraints,
+              while taking care to identify other potential areas for
+              consideration.
             </Typography>
-            <Typography variant="body1" align="right" paragraph>
-              We want to help businesses capitalize on the latest and greatest
-              technology. The best way to predict the future is to be the one
-              building it, and we want to help guide the world into this next
-              chapter of technological expansion, exploration, and innovation.
-            </Typography>
-            <Typography variant="body1" align="right" paragraph>
-              By holding ourselves to rigorous standards and pristine quality,
-              we can ensure you have the absolute best tools necessary to thrive
-              in this new frontier.
-            </Typography>
-            <Typography variant="body1" align="right" paragraph>
-              We see a future where every individual has personalized software
-              custom tailored to their lifestyle, culrture, and interests,
-              helping them overcome life&apos;s obstacles. Each is a step
-              towards that goal.
+            <Typography
+              variant="body1"
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              Cutting-edge advancements in machine learning like object
+              detection and natural language processing allow computers to do
+              things previously unimaginable, and our expertise and intuition
+              will help usher you into this new future of possibilities.
             </Typography>
           </Grid>
+        </Grid>
+        <Grid item lg style={{ alignSelf: 'center' }}>
+          <img src={consultation} alt="handshake" />
         </Grid>
       </Grid>
     </Grid>
