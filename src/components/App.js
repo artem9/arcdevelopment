@@ -8,6 +8,7 @@ import theme from './ui/Theme';
 import CustomSoftware from './CustomSoftware';
 import LandingPage from './LandingPage';
 import MobileApps from './MobileApps';
+import Revolution from './Revolution';
 import Services from './Services';
 
 function App() {
@@ -65,7 +66,7 @@ function App() {
             }
           />
           <Route exact path="/websites" element={<div>Websites</div>} />
-          <Route exact path="/revolution" element={<div>The Revolution</div>} />
+          <Route exact path="/revolution" element={<Revolution />} />
           <Route exact path="/about" element={<div>About Us</div>} />
           <Route exact path="/contact" element={<div>Contact Us</div>} />
           <Route exact path="/estimate" element={<div>Estimate</div>} />
