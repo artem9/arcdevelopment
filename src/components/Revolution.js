@@ -2,6 +2,7 @@ import React from 'react';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import useTheme from '@mui/material/styles/useTheme';
 
 import { makeStyles } from 'tss-react/mui';
@@ -34,59 +35,94 @@ const useStyles = makeStyles()((theme) => ({
 export default function Revolution() {
   const { classes } = useStyles();
   const theme = useTheme();
+  const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Grid container direction="column">
       <Grid item className={classes.rowContainer} style={{ marginTop: '2em' }}>
-        <Typography variant="h2" style={{ fontFamily: 'Pacifico' }}>
+        <Typography
+          variant="h2"
+          align={matchesLG ? 'center' : undefined}
+          style={{ fontFamily: 'Pacifico' }}
+        >
           The Revolution
         </Typography>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         alignItems="center"
         className={classes.rowContainer}
+        style={{ marginTop: '5em' }}
       >
         <Grid item lg>
           <img
             src={vision}
             alt="mountain through binoculars"
-            style={{ maxWidth: '40em', marginRight: '5em' }}
+            style={{
+              maxWidth: matchesMD ? 300 : '40em',
+              marginRight: matchesLG ? 0 : '5em',
+              marginBottom: matchesLG ? '5em' : 0,
+            }}
           />
         </Grid>
         <Grid item container direction="column" style={{ maxWidth: '40em' }} lg>
           <Grid item>
-            <Typography variant="h4" align="right" gutterBottom>
+            <Typography
+              variant="h4"
+              align={matchesLG ? 'center' : 'right'}
+              gutterBottom
+            >
               Vision
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" align="right" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : 'right'}
+              paragraph
+            >
               The rise of computers, and subsequently the Internet, has
               completely altered every aspect of human life. This has increased
               our comfort, broadened our connections, and reshaped how we view
               the world.
             </Typography>
-            <Typography variant="body1" align="right" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : 'right'}
+              paragraph
+            >
               What once was confined to huge rooms and teams of engineers now
               resides in every single one of our hands. Harnessing this
               unlimited potential by using it to solve problems and better lives
               is at the heart of everything we do.
             </Typography>
-            <Typography variant="body1" align="right" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : 'right'}
+              paragraph
+            >
               We want to help businesses capitalize on the latest and greatest
               technology. The best way to predict the future is to be the one
               building it, and we want to help guide the world into this next
               chapter of technological expansion, exploration, and innovation.
             </Typography>
-            <Typography variant="body1" align="right" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : 'right'}
+              paragraph
+            >
               By holding ourselves to rigorous standards and pristine quality,
               we can ensure you have the absolute best tools necessary to thrive
               in this new frontier.
             </Typography>
-            <Typography variant="body1" align="right" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : 'right'}
+              paragraph
+            >
               We see a future where every individual has personalized software
               custom tailored to their lifestyle, culrture, and interests,
               helping them overcome life&apos;s obstacles. Each is a step
@@ -98,60 +134,98 @@ export default function Revolution() {
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         alignItems="center"
         className={classes.rowContainer}
+        style={{ marginTop: '10em', marginBottom: '10em' }}
       >
         <Grid item container direction="column" style={{ maxWidth: '40em' }} lg>
           <Grid item>
-            <Typography variant="h4" gutterBottom>
+            <Typography
+              variant="h4"
+              align={matchesLG ? 'center' : undefined}
+              gutterBottom
+            >
               Technology
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : undefined}
+              paragraph
+            >
               In 2013, Facebook invented a new way of building websites. This
               new system, React.js, completely revolutionized the process and
               practice of website development.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : undefined}
+              paragraph
+            >
               Instead of chaining together long individuals pages, like
               traditional websites, React websites are built with little chunks
               of code called components. These components are faster, easier to
               maintain, and are easily reused and customized, each serving a
               singular purpose.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : undefined}
+              paragraph
+            >
               Two years later they shocked the world by releasing a similar
               system, React Native, for producing iOS and Android apps. Instead
               of having to master two completely separate development platforms,
               you can leverage the knowledge you already possessed from building
               websites and reapply it directly! This was a huge leap forward.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : undefined}
+              paragraph
+            >
               This technology is now being used by companies like AirBnB,
               Microsoft, Netflix, Pinterest, Skype, Tesla, UberEats, and when
               Facebook purchased Instagram large portions of it were even
               rebuilt using React.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : undefined}
+              paragraph
+            >
               Developers have since built on top of these systems by automating
               project setup and deployment, allowing creators to focus as much
               as possible on their work itself.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : undefined}
+              paragraph
+            >
               These technical advancements translate into savings by
               significantly reducing the workload and streamlining the workflow
               for developing new pieces of software, while also lowering the
               barrier to entry for mobile app development.
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography
+              variant="body1"
+              align={matchesLG ? 'center' : undefined}
+              paragraph
+            >
               This puts personalization in your pocket - faster, better, and
               more affordable than ever before.
             </Typography>
           </Grid>
         </Grid>
-        <Grid item container justifyContent="flex-end" lg>
+        <Grid
+          item
+          container
+          justifyContent={matchesLG ? 'center' : 'flex-end'}
+          lg
+        >
           <Lottie
             animationData={technologyAnimation}
             style={{ maxWidth: '40em', margin: 0 }}
@@ -175,16 +249,23 @@ export default function Revolution() {
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#B3B3B3', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
-              gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
+              gutterBottom
             >
               Consultation
             </Typography>
@@ -192,6 +273,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -203,6 +285,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -212,6 +295,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -223,21 +307,33 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={consultation} alt="handshake" />
+          <img
+            src={consultation}
+            alt="handshake"
+            width="100%"
+            style={{ maxWidth: 700 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#FF7373', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Mockup
@@ -246,6 +342,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -254,6 +351,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -265,6 +363,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -274,21 +373,33 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={mockup} alt="basic website design outline" />
+          <img
+            src={mockup}
+            alt="basic website design outline"
+            width="100%"
+            style={{ maxWidth: 1000 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#39B54A', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Review
@@ -297,6 +408,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -307,6 +419,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -316,6 +429,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -325,21 +439,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={review} alt="magnifying glass" />
+          <img src={review} alt="magnifying glass" width="100%" />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#A67C52', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Design
@@ -348,6 +469,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -359,6 +481,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -368,21 +491,33 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={design} alt="paintbrush leaving stroke of paint" />
+          <img
+            src={design}
+            alt="paintbrush leaving stroke of paint"
+            width="100%"
+            style={{ maxWidth: 1000 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#39B54A', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Review
@@ -391,6 +526,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -399,6 +535,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -410,21 +547,28 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={review} alt="magnifying glass" />
+          <img src={review} alt="magnifying glass" width="100%" />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#FBB03B', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Build
@@ -433,6 +577,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -440,6 +585,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -449,6 +595,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -457,6 +604,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -466,6 +614,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -475,6 +624,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -486,21 +636,33 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={build} alt="building construction site" />
+          <img
+            src={build}
+            alt="building construction site"
+            width="100%"
+            style={{ maxWidth: matchesLG ? 700 : 1000 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#C1272D', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Launch
@@ -509,6 +671,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -516,6 +679,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -526,6 +690,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -537,21 +702,33 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={launch} alt="rocket" />
+          <img
+            src={launch}
+            alt="rocket"
+            width="100%"
+            style={{ maxWidth: 200 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#8E45CE', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Maintain
@@ -560,6 +737,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -567,6 +745,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -575,6 +754,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -587,21 +767,33 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={maintain} alt="wrench tightening bolts" />
+          <img
+            src={maintain}
+            alt="wrench tightening bolts"
+            width="100%"
+            style={{ maxWidth: 500 }}
+          />
         </Grid>
       </Grid>
       <Grid
         item
         container
-        direction="row"
+        direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
         style={{ backgroundColor: '#29ABE2', height: '90em' }}
       >
-        <Grid item container direction="column" lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={matchesLG ? 'center' : undefined}
+          lg
+        >
           <Grid item>
             <Typography
               variant="h4"
               gutterBottom
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#000', marginTop: '5em' }}
             >
               Iterate
@@ -610,6 +802,7 @@ export default function Revolution() {
           <Grid item>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -619,6 +812,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -629,6 +823,7 @@ export default function Revolution() {
             </Typography>
             <Typography
               variant="body1"
+              align={matchesLG ? 'center' : undefined}
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -639,7 +834,7 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={iterate} alt="falling dominoes" />
+          <img src={iterate} alt="falling dominoes" width="100%" />
         </Grid>
       </Grid>
     </Grid>
