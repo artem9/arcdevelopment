@@ -20,7 +20,7 @@ import engagement from '../assets/increaseEngagement.svg';
 import forwardArrow from '../assets/forwardArrow.svg';
 import swiss from '../assets/swissKnife.svg';
 
-import integrationAnimation from '../animations/integrationanimation/data.json';
+import integrationAnimation from '../animations/integrationAnimation/data.json';
 
 const useStyles = makeStyles()((theme) => ({
   arrowContainer: {

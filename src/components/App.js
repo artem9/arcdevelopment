@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import Header from './ui/Header';
 import Footer from './ui/Footer';
 import theme from './ui/Theme';
+import About from './About';
 import CustomSoftware from './CustomSoftware';
 import LandingPage from './LandingPage';
 import MobileApps from './MobileApps';
@@ -67,7 +68,7 @@ function App() {
           />
           <Route exact path="/websites" element={<div>Websites</div>} />
           <Route exact path="/revolution" element={<Revolution />} />
-          <Route exact path="/about" element={<div>About Us</div>} />
+          <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<div>Contact Us</div>} />
           <Route exact path="/estimate" element={<div>Estimate</div>} />
         </Routes>
