@@ -18,6 +18,11 @@ export default createTheme({
     },
   },
   typography: {
+    caption: {
+      fontSize: '1rem',
+      fontWeight: 300,
+      color: arcGrey,
+    },
     body1: {
       fontSize: '1.25rem',
       color: arcGrey,
