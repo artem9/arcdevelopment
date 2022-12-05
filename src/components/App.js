@@ -68,7 +68,7 @@ function App() {
           />
           <Route exact path="/websites" element={<div>Websites</div>} />
           <Route exact path="/revolution" element={<Revolution />} />
-          <Route exact path="/about" element={<About />} />
+          <Route exact path="/about" element={<About setValue={setValue} />} />
           <Route exact path="/contact" element={<div>Contact Us</div>} />
           <Route exact path="/estimate" element={<div>Estimate</div>} />
         </Routes>
