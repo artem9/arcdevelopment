@@ -57,7 +57,9 @@ function About({ setValue }) {
         className={classes.rowContainer}
         style={{ marginTop: matchesLG ? '1em' : '2em' }}
       >
-        <Typography variant="h2" align={matchesLG ? 'center' : undefined}>About Us</Typography>
+        <Typography variant="h2" align={matchesLG ? 'center' : undefined}>
+          About Us
+        </Typography>
       </Grid>
       <Grid
         item

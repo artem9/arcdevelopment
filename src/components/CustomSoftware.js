@@ -88,6 +88,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <Typography
               align={matchesLG ? 'center' : undefined}
               variant="body1"
+              paragraph
             >
               Whether we&apos;re replacing old software or inventing new
               solutions, Arc Development is here to help your business tackle
@@ -96,6 +97,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <Typography
               align={matchesLG ? 'center' : undefined}
               variant="body1"
+              paragraph
             >
               Using regular commercial software leaves you with a lot of stuff
               you don&apos;t need, without some of the stuff you do need, and
@@ -106,6 +108,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <Typography
               align={matchesLG ? 'center' : undefined}
               variant="body1"
+              paragraph
             >
               Our custom solutions are designed from the ground up with your
               needs, wants, and goals at the core. This collaborative process
@@ -116,6 +119,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <Typography
               align={matchesLG ? 'center' : undefined}
               variant="body1"
+              paragraph
             >
               We create exacly what you want, exacly how you want it.
             </Typography>

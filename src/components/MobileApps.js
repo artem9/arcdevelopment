@@ -85,12 +85,14 @@ function MobileApps({ setSelectedIndex, setValue }) {
             <Typography
               align={matchesLG ? 'center' : undefined}
               variant="body1"
+              paragraph
             >
               Mobile apps allow you to take your tools on the go.
             </Typography>
             <Typography
               align={matchesLG ? 'center' : undefined}
               variant="body1"
+              paragraph
             >
               Whether you want an app for your customers, employees, or
               yourself, we can build cross-platform native solutions for any
@@ -101,6 +103,7 @@ function MobileApps({ setSelectedIndex, setValue }) {
             <Typography
               align={matchesLG ? 'center' : undefined}
               variant="body1"
+              paragraph
             >
               Convenience. Connection.
             </Typography>

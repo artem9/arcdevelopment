@@ -11,6 +11,7 @@ import LandingPage from './LandingPage';
 import MobileApps from './MobileApps';
 import Revolution from './Revolution';
 import Services from './Services';
+import Websites from './Websites';
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -66,7 +67,16 @@ function App() {
               />
             }
           />
-          <Route exact path="/websites" element={<div>Websites</div>} />
+          <Route
+            exact
+            path="/websites"
+            element={
+              <Websites
+                setSelectedIndex={setSelectedIndex}
+                setValue={setValue}
+              />
+            }
+          />
           <Route exact path="/revolution" element={<Revolution />} />
           <Route exact path="/about" element={<About setValue={setValue} />} />
           <Route exact path="/contact" element={<div>Contact Us</div>} />
