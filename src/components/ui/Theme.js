@@ -5,6 +5,29 @@ const arcOrange = '#FFBA60';
 const arcGrey = '#868686';
 
 export default createTheme({
+  components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        standard: {
+          color: arcBlue,
+          fontSize: '1rem',
+        },
+      },
+    },
+    MuiInput: {
+      styleOverrides: {
+        underline: {
+          '&:before': {
+            borderBottom: `2px solid ${arcBlue}`,
+          },
+          '&:hover:not(.Mui-disabled):not(.Mui-focused):not(.Mui-error):before':
+            {
+              borderBottom: `2px solid ${arcBlue}`,
+            },
+        },
+      },
+    },
+  },
   palette: {
     common: {
       blue: arcBlue,
