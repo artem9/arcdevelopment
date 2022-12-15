@@ -19,6 +19,7 @@ export default createTheme({
         root: {
           color: arcGrey,
           fontWeight: 300,
+          fontSize: '1rem',
         },
         underline: {
           '&:before': {
