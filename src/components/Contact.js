@@ -14,6 +14,7 @@ import { makeStyles } from 'tss-react/mui';
 import ButtonArrow from './ui/ButtonArrow';
 
 import background from '../assets/background.jpg';
+import mobileBackground from '../assets/mobileBackground.jpg';
 import phoneIcon from '../assets/phone.svg';
 import emailIcon from '../assets/email.svg';
 import airplane from '../assets/send.svg';
@@ -26,6 +27,9 @@ const useStyles = makeStyles()((theme) => ({
     backgroundRepeat: 'no-repeat',
     height: '60em',
     paddingBottom: '10em',
+    [theme.breakpoints.down('md')]: {
+      backgroundImage: `url(${mobileBackground})`,
+    },
   },
   estimateButton: {
     ...theme.typography.estimate,
@@ -75,11 +79,44 @@ function Contact({ setValue }) {
   const { classes } = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesLG = useMediaQuery(theme.breakpoints.down('lg'));
 
   const [name, setName] = useState('');
+
   const [email, setEmail] = useState('');
+  const [emailHelper, setEmailHelper] = useState('');
+
   const [phone, setPhone] = useState('');
+  const [phoneHelper, setPhoneHelper] = useState('');
+
   const [message, setMessage] = useState('');
+
+  const onChange = (event) => {
+    let valid;
+
+    switch (event.target.id) {
+      case 'email':
+        setEmail(event.target.value);
+        valid =
+          !event.target.value.length ||
+          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+            event.target.value
+          );
+        setEmailHelper(!valid ? 'Invalid email' : '');
+        break;
+      case 'phone':
+        setPhone(event.target.value);
+        valid =
+          !event.target.value.length ||
+          /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(
+            event.target.value
+          );
+        setPhoneHelper(!valid ? 'Invalid phone' : '');
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <Grid container direction="row">
@@ -89,17 +126,27 @@ function Contact({ setValue }) {
         direction="column"
         justifyContent="center"
         alignItems="center"
+        style={{
+          marginBottom: matchesLG ? '5em' : 0,
+          // eslint-disable-next-line no-nested-ternary
+          marginTop: matchesMD ? '1em' : matchesLG ? '5em' : 0,
+        }}
         lg={4}
         xl={3}
       >
         <Grid item>
           <Grid item container direction="column">
             <Grid item>
-              <Typography variant="h2" style={{ lineHeight: 1 }}>
+              <Typography
+                variant="h2"
+                align={matchesLG ? 'center' : undefined}
+                style={{ lineHeight: 1 }}
+              >
                 Contact Us
               </Typography>
               <Typography
                 variant="body1"
+                align={matchesLG ? 'center' : undefined}
                 style={{ color: theme.palette.common.blue }}
               >
                 We&apos;re waiting.
@@ -139,32 +186,44 @@ function Contact({ setValue }) {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item container style={{ maxWidth: '20em' }}>
-              <Grid item>
+            <Grid
+              item
+              container
+              direction="column"
+              style={{ maxWidth: '20em' }}
+            >
+              <Grid item style={{ marginBottom: '0.5em' }}>
                 <TextField
                   label="Name"
                   id="name"
                   value={name}
                   variant="standard"
                   onChange={(event) => setName(event.target.value)}
+                  fullWidth
                 />
               </Grid>
-              <Grid item>
+              <Grid item style={{ marginBottom: '0.5em' }}>
                 <TextField
                   label="Email"
                   id="email"
+                  error={emailHelper.length !== 0}
+                  helperText={emailHelper}
                   value={email}
                   variant="standard"
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={onChange}
+                  fullWidth
                 />
               </Grid>
-              <Grid item>
+              <Grid item style={{ marginBottom: '0.5em' }}>
                 <TextField
                   label="Phone"
                   id="phone"
+                  error={phoneHelper.length !== 0}
+                  helperText={phoneHelper}
                   value={phone}
                   variant="standard"
-                  onChange={(event) => setPhone(event.target.value)}
+                  onChange={onChange}
+                  fullWidth
                 />
               </Grid>
             </Grid>
@@ -177,6 +236,7 @@ function Contact({ setValue }) {
                 variant="standard"
                 onChange={(event) => setMessage(event.target.value)}
                 rows={10}
+                fullWidth
                 multiline
               />
             </Grid>
@@ -201,8 +261,10 @@ function Contact({ setValue }) {
       <Grid
         item
         container
+        direction={matchesMD ? 'column' : 'row'}
         className={classes.background}
         alignItems="center"
+        justifyContent={matchesMD ? 'center' : undefined}
         lg={8}
         xl={9}
       >
@@ -215,12 +277,16 @@ function Contact({ setValue }) {
         >
           <Grid container direction="column">
             <Grid item>
-              <Typography variant="h2">
+              <Typography align={matchesMD ? 'center' : undefined} variant="h2">
                 Simple Software.
                 <br />
                 Revolutionary Results.
               </Typography>
-              <Typography variant="subtitle2" style={{ fontSize: '1.5rem' }}>
+              <Typography
+                align={matchesMD ? 'center' : undefined}
+                variant="subtitle2"
+                style={{ fontSize: '1.5rem' }}
+              >
                 Take advantage of the 21st Century.
               </Typography>
               <Grid
