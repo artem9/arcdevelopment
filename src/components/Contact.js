@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
@@ -122,6 +123,15 @@ function Contact({ setValue }) {
       default:
         break;
     }
+  };
+
+  const onConfirm = () => {
+    axios
+      .get(
+        'https://us-central1-material-ui-course-b85b7.cloudfunctions.net/sendMail'
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   const sendDisabled = () =>
@@ -377,7 +387,7 @@ function Contact({ setValue }) {
                 disabled={sendDisabled()}
                 variant="contained"
                 className={classes.sendButton}
-                onClick={() => setOpen(false)}
+                onClick={onConfirm}
               >
                 Send Message
                 <img
