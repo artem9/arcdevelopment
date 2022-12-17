@@ -5,9 +5,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Grid from '@mui/material/Grid';
+import Snackbar from '@mui/material/Snackbar';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -102,6 +104,14 @@ function Contact({ setValue }) {
 
   const [open, setOpen] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
+  const [alert, setAlert] = useState({
+    open: false,
+    message: '',
+    backgroundColor: '',
+  });
+
   const onChange = (event) => {
     let valid;
 
@@ -125,14 +135,53 @@ function Contact({ setValue }) {
     }
   };
 
+  const clearForm = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setMessage('');
+    setOpen(false);
+  };
+
   const onConfirm = () => {
+    setLoading(true);
     axios
       .get(
-        'https://us-central1-material-ui-course-b85b7.cloudfunctions.net/sendMail'
+        'https://us-central1-material-ui-course-b85b7.cloudfunctions.net/sendMail',
+        {
+          params: {
+            name,
+            email,
+            phone,
+            message,
+          },
+        }
       )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setLoading(false);
+        clearForm();
+        setAlert({
+          open: true,
+          message: 'Message sent successfully!',
+          backgroundColor: '#4BB543',
+        });
+      })
+      .catch((err) => {
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: 'Something went wrong, please try again!',
+          backgroundColor: '#FF3232',
+        });
+      });
   };
+
+  const buttonContents = (
+    <>
+      Send Message
+      <img src={airplane} alt="paper airplane" style={{ marginLeft: '1em' }} />
+    </>
+  );
 
   const sendDisabled = () =>
     name.length === 0 ||
@@ -283,12 +332,7 @@ function Contact({ setValue }) {
                 className={classes.sendButton}
                 onClick={() => setOpen(true)}
               >
-                Send Message
-                <img
-                  src={airplane}
-                  alt="paper airplane"
-                  style={{ marginLeft: '1em' }}
-                />
+                {buttonContents}
               </Button>
             </Grid>
           </Grid>
@@ -389,17 +433,20 @@ function Contact({ setValue }) {
                 className={classes.sendButton}
                 onClick={onConfirm}
               >
-                Send Message
-                <img
-                  src={airplane}
-                  alt="paper airplane"
-                  style={{ marginLeft: '1em' }}
-                />
+                {loading ? <CircularProgress size={30} /> : buttonContents}
               </Button>
             </Grid>
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        autoHideDuration={4000}
+        onClose={() => setAlert({ ...alert, open: false })}
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+      />
       <Grid
         item
         container
