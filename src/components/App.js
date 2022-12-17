@@ -13,6 +13,7 @@ import MobileApps from './MobileApps';
 import Revolution from './Revolution';
 import Services from './Services';
 import Websites from './Websites';
+import Estimate from "./Estimate";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -85,7 +86,7 @@ function App() {
             path="/contact"
             element={<Contact setValue={setValue} />}
           />
-          <Route exact path="/estimate" element={<div>Estimate</div>} />
+          <Route exact path="/estimate" element={<Estimate />} />
         </Routes>
         <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
