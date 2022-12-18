@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { cloneDeep } from 'lodash';
 
 import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import useTheme from '@mui/material/styles/useTheme';
 
 import { makeStyles } from 'tss-react/mui';
@@ -54,6 +58,11 @@ const useStyles = makeStyles()((theme) => ({
     '&:hover': {
       backgroundColor: theme.palette.secondary.light,
     },
+  },
+  message: {
+    border: `2px solid ${theme.palette.common.blue}`,
+    marginTop: '5em',
+    borderRadius: 5,
   },
 }));
 
@@ -315,7 +324,20 @@ const websiteQuestions = [
 export default function Estimate() {
   const { classes } = useStyles();
   const theme = useTheme();
-  const [questions, setQuestions] = useState(softwareQuestions);
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const [questions, setQuestions] = useState(defaultQuestions);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const [name, setName] = useState('');
+
+  const [email, setEmail] = useState('');
+  const [emailHelper, setEmailHelper] = useState('');
+
+  const [phone, setPhone] = useState('');
+  const [phoneHelper, setPhoneHelper] = useState('');
+
+  const [message, setMessage] = useState('');
 
   const nextQuestion = () => {
     const newQuestions = cloneDeep(questions);
@@ -362,9 +384,59 @@ export default function Estimate() {
     const activeIndex = currentlyActive[0].id - 1;
 
     const newSelected = newQuestions[activeIndex].options[id - 1];
-    newSelected.selected = !newSelected.selected;
+    const previousSelected = currentlyActive[0].options.filter(
+      (option) => option.selected
+    );
 
-    setQuestions(newQuestions);
+    switch (currentlyActive[0].subtitle) {
+      case 'Select one.':
+        if (previousSelected[0]) {
+          previousSelected[0].selected = !previousSelected[0].selected;
+        }
+        newSelected.selected = !newSelected.selected;
+        break;
+      default:
+        newSelected.selected = !newSelected.selected;
+        break;
+    }
+
+    switch (newSelected.title) {
+      case 'Custom Software Development':
+        setQuestions(softwareQuestions);
+        break;
+      case 'iOS/Android App Development':
+        setQuestions(softwareQuestions);
+        break;
+      case 'Website Development':
+        setQuestions(websiteQuestions);
+        break;
+      default:
+        setQuestions(newQuestions);
+        break;
+    }
+  };
+
+  const onChange = (event) => {
+    let valid;
+
+    switch (event.target.id) {
+      case 'email':
+        setEmail(event.target.value);
+        valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+          event.target.value
+        );
+        setEmailHelper(!valid ? 'Invalid email' : '');
+        break;
+      case 'phone':
+        setPhone(event.target.value);
+        valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(
+          event.target.value
+        );
+        setPhoneHelper(!valid ? 'Invalid phone' : '');
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -496,11 +568,87 @@ export default function Estimate() {
           </Grid>
         </Grid>
         <Grid item>
-          <Button variant="contained" className={classes.estimateButton}>
+          <Button
+            variant="contained"
+            className={classes.estimateButton}
+            onClick={() => setDialogOpen(true)}
+          >
             Get Estimate
           </Button>
         </Grid>
       </Grid>
+      <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
+        <Grid container justifyContent="center">
+          <Grid item>
+            <Typography variant="h2" align="center">
+              Estimate
+            </Typography>
+          </Grid>
+        </Grid>
+        <DialogContent>
+          <Grid container>
+            <Grid item container direction="column">
+              <Grid item style={{ marginBottom: '0.5em' }}>
+                <TextField
+                  label="Name"
+                  id="name"
+                  value={name}
+                  variant="standard"
+                  onChange={(event) => setName(event.target.value)}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: '0.5em' }}>
+                <TextField
+                  label="Email"
+                  id="email"
+                  error={emailHelper.length !== 0}
+                  helperText={emailHelper}
+                  value={email}
+                  variant="standard"
+                  onChange={onChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: '0.5em' }}>
+                <TextField
+                  label="Phone"
+                  id="phone"
+                  error={phoneHelper.length !== 0}
+                  helperText={phoneHelper}
+                  value={phone}
+                  variant="standard"
+                  onChange={onChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ maxWidth: matchesSM ? '100%' : '20em' }}>
+                <TextField
+                  id="message"
+                  InputProps={{ disableUnderline: true }}
+                  className={classes.message}
+                  value={message}
+                  variant="standard"
+                  onChange={(event) => setMessage(event.target.value)}
+                  rows={10}
+                  fullWidth
+                  multiline
+                />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1" paragraph>
+                  We can create this digital solution for an estimated
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  Fill out your name, phone number, and email, place your
+                  request, and we&apos;ll get back to you with details moving
+                  forward and a final price.
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </DialogContent>
+      </Dialog>
     </Grid>
   );
 }
