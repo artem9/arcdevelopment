@@ -314,7 +314,7 @@ const websiteQuestions = [
 
 export default function Estimate() {
   const { classes } = useStyles();
-  const theme = useTheme;
+  const theme = useTheme();
   const [questions, setQuestions] = useState(softwareQuestions);
 
   const nextQuestion = () => {
@@ -341,6 +341,32 @@ export default function Estimate() {
     setQuestions(newQuestions);
   };
 
+  const navigationPreviousDisabled = () => {
+    const currentlyActive = questions.filter((question) => question.active);
+    if (currentlyActive[0].id === 1) {
+      return true;
+    }
+    return false;
+  };
+  const navigationNextDisabled = () => {
+    const currentlyActive = questions.filter((question) => question.active);
+    if (currentlyActive[0].id === questions[questions.length - 1].id) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleSelect = (id) => {
+    const newQuestions = cloneDeep(questions);
+    const currentlyActive = newQuestions.filter((question) => question.active);
+    const activeIndex = currentlyActive[0].id - 1;
+
+    const newSelected = newQuestions[activeIndex].options[id - 1];
+    newSelected.selected = !newSelected.selected;
+
+    setQuestions(newQuestions);
+  };
+
   return (
     <Grid container direction="row">
       <Grid item container direction="column" lg>
@@ -355,6 +381,7 @@ export default function Estimate() {
             animationData={estimateAnimation}
             style={{ height: '100%', width: '100%' }}
             autoplay
+            loop
           />
         </Grid>
       </Grid>
@@ -378,6 +405,7 @@ export default function Estimate() {
                     fontWeight: 500,
                     fontSize: '2.25rem',
                     marginTop: '5em',
+                    lineHeight: 1.25,
                   }}
                 >
                   {question.title}
@@ -393,8 +421,24 @@ export default function Estimate() {
               </Grid>
               <Grid item container>
                 {question.options.map((option) => (
-                  <Grid key={option.title} item container direction="column" md>
-                    <Grid item style={{ maxWidth: '12em' }}>
+                  <Grid
+                    key={option.title}
+                    item
+                    container
+                    direction="column"
+                    md
+                    component={Button}
+                    onClick={() => handleSelect(option.id)}
+                    style={{
+                      display: 'grid',
+                      textTransform: 'none',
+                      borderRadius: 0,
+                      backgroundColor: option.selected
+                        ? theme.palette.common.orange
+                        : null,
+                    }}
+                  >
+                    <Grid item style={{ maxWidth: '14em' }}>
                       <Typography
                         variant="h6"
                         align="center"
@@ -425,13 +469,29 @@ export default function Estimate() {
           style={{ width: '18em', marginTop: '3em' }}
         >
           <Grid item>
-            <IconButton onClick={previousQuestion}>
-              <img src={backArrow} alt="Previous question" />
+            <IconButton
+              disabled={navigationPreviousDisabled()}
+              onClick={previousQuestion}
+            >
+              <img
+                src={
+                  navigationPreviousDisabled() ? backArrowDisabled : backArrow
+                }
+                alt="Previous question"
+              />
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton onClick={nextQuestion}>
-              <img src={forwardArrow} alt="Next question" />
+            <IconButton
+              disabled={navigationNextDisabled()}
+              onClick={nextQuestion}
+            >
+              <img
+                src={
+                  navigationNextDisabled() ? forwardArrowDisabled : forwardArrow
+                }
+                alt="Next question"
+              />
             </IconButton>
           </Grid>
         </Grid>
