@@ -413,7 +413,6 @@ function LandingPage({ setValue, setSelectedIndex }) {
             <Grid
               item
               sm
-              // eslint-disable-next-line no-nested-ternary
               style={{ marginLeft: matchesSM ? 0 : matchesMD ? '2em' : '5em' }}
             >
               <Grid
@@ -446,7 +445,6 @@ function LandingPage({ setValue, setSelectedIndex }) {
               item
               sm
               style={{
-                // eslint-disable-next-line no-nested-ternary
                 marginRight: matchesSM ? 0 : matchesMD ? '2em' : '5em',
                 textAlign: matchesSM ? 'center' : 'right',
               }}
