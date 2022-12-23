@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { cloneDeep } from 'lodash';
+import axios from 'axios';
 
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Grid from '@mui/material/Grid';
 import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
+import Snackbar from '@mui/material/Snackbar';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -358,6 +361,14 @@ export default function Estimate() {
   const [category, setCategory] = useState('');
   const [usersNumber, setUsersNumber] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
+  const [alert, setAlert] = useState({
+    open: false,
+    message: '',
+    backgroundColor: '',
+  });
+
   const nextQuestion = () => {
     const newQuestions = cloneDeep(questions);
     const currentlyActive = newQuestions.filter((question) => question.active);
@@ -571,6 +582,87 @@ export default function Estimate() {
       setCategory(newCategory);
     }
   };
+
+  const clearForm = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setMessage('');
+    setDialogOpen(false);
+  };
+
+  const sendEstimate = () => {
+    setLoading(true);
+
+    axios
+      .get(
+        'https://us-central1-material-ui-course-b85b7.cloudfunctions.net/sendMail',
+        {
+          params: {
+            name,
+            email,
+            phone,
+            message,
+            total,
+            category,
+            service,
+            platforms,
+            features,
+            customFeatures,
+            users: usersNumber,
+          },
+        }
+      )
+      .then((res) => {
+        setLoading(false);
+        clearForm();
+        setAlert({
+          open: true,
+          message: 'Estimate placed successfully!',
+          backgroundColor: '#4BB543',
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: 'Something went wrong, please try again!',
+          backgroundColor: '#FF3232',
+        });
+      });
+  };
+
+  const estimateDisabled = () => {
+    let disabled = true;
+
+    const emptySelections = questions
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((question) => question.length === 0);
+
+    if (questions.length === 2) {
+      if (emptySelections.length === 1) {
+        disabled = false;
+      }
+    } else if (questions.length === 1) {
+      disabled = true;
+    } else if (
+      emptySelections.length < 3 &&
+      questions[questions.length - 1].options.filter(
+        (option) => option.selected
+      ).length > 0
+    ) {
+      disabled = false;
+    }
+
+    return disabled;
+  };
+
+  const placeRequestDisabled = () =>
+    name.length === 0 ||
+    message.length === 0 ||
+    emailHelper.length !== 0 ||
+    phoneHelper.length !== 0;
 
   const softwareSelection = (
     <Grid container direction="column">
@@ -836,6 +928,7 @@ export default function Estimate() {
           <Button
             variant="contained"
             className={classes.estimateButton}
+            disabled={estimateDisabled()}
             onClick={() => {
               setDialogOpen(true);
               getTotal();
@@ -919,6 +1012,7 @@ export default function Estimate() {
                   className={classes.message}
                   value={message}
                   variant="standard"
+                  placeholder="Tell us more about your project"
                   onChange={(event) => setMessage(event.target.value)}
                   rows={10}
                   fullWidth
@@ -929,6 +1023,7 @@ export default function Estimate() {
                 <Typography
                   variant="body1"
                   align={matchesMD ? 'center' : undefined}
+                  style={{ lineHeight: 1.25 }}
                   paragraph
                 >
                   We can create this digital solution for an estimated{' '}
@@ -961,13 +1056,24 @@ export default function Estimate() {
                 </Grid>
               </Hidden>
               <Grid item>
-                <Button variant="contained" className={classes.estimateButton}>
-                  Place Request
-                  <img
-                    src={send}
-                    alt="paper airplane"
-                    style={{ marginLeft: '0.5em' }}
-                  />
+                <Button
+                  variant="contained"
+                  className={classes.estimateButton}
+                  onClick={sendEstimate}
+                  disabled={placeRequestDisabled()}
+                >
+                  {loading ? (
+                    <CircularProgress />
+                  ) : (
+                    <>
+                      Place Request
+                      <img
+                        src={send}
+                        alt="paper airplane"
+                        style={{ marginLeft: '0.5em' }}
+                      />
+                    </>
+                  )}
                 </Button>
               </Grid>
               <Hidden mdUp>
@@ -985,6 +1091,14 @@ export default function Estimate() {
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        autoHideDuration={4000}
+        onClose={() => setAlert({ ...alert, open: false })}
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+      />
     </Grid>
   );
 }

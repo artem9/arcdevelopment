@@ -402,6 +402,7 @@ function Contact({ setValue }) {
                 className={classes.message}
                 value={message}
                 variant="standard"
+                placeholder="Tell us more about your project"
                 onChange={(event) => setMessage(event.target.value)}
                 rows={10}
                 fullWidth
