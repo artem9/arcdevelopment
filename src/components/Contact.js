@@ -269,7 +269,7 @@ function Contact({ setValue }) {
               item
               container
               direction="column"
-              style={{ maxWidth: '20em' }}
+              style={{ width: '20em' }}
             >
               <Grid item style={{ marginBottom: '0.5em' }}>
                 <TextField
@@ -306,7 +306,7 @@ function Contact({ setValue }) {
                 />
               </Grid>
             </Grid>
-            <Grid item style={{ maxWidth: '20em' }}>
+            <Grid item style={{ width: '20em' }}>
               <TextField
                 id="message"
                 InputProps={{ disableUnderline: true }}
@@ -339,7 +339,7 @@ function Contact({ setValue }) {
       </Grid>
       <Dialog
         open={open}
-        fullScreen={matchesSM}
+        fullScreen={matchesMD}
         onClose={() => setOpen(false)}
         style={{ zIndex: 1302 }}
         PaperProps={{
@@ -349,8 +349,8 @@ function Contact({ setValue }) {
               : matchesMD
               ? '2em 5em'
               : matchesLG
-              ? '3em 10em'
-              : '4em 15em',
+              ? '3em 15em'
+              : '4em 25em',
           },
         }}
       >
@@ -395,7 +395,7 @@ function Contact({ setValue }) {
                 fullWidth
               />
             </Grid>
-            <Grid item style={{ maxWidth: matchesSM ? '100%' : '20em' }}>
+            <Grid item style={{ width: matchesMD ? '100%' : '20em' }}>
               <TextField
                 id="message"
                 InputProps={{ disableUnderline: true }}
@@ -412,7 +412,7 @@ function Contact({ setValue }) {
           <Grid
             item
             container
-            direction={matchesSM ? 'column' : 'row'}
+            direction={matchesMD ? 'column' : 'row'}
             style={{ marginTop: '2em' }}
             alignItems="center"
           >
