@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
-import footerAdornment from '../../assets/Footer Adornment.svg';
+import footerAdornment from '../../assets/footerAdornment.svg';
 import facebook from '../../assets/facebook.svg';
 import twitter from '../../assets/twitter.svg';
 import instagram from '../../assets/instagram.svg';

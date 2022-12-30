@@ -18,7 +18,7 @@ import CallToAction from './ui/CallToAction';
 import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
 import mobileAppsIcon from '../assets/mobileIcon.svg';
-import customSoftwareIcon from '../assets/Custom Software Icon.svg';
+import customSoftwareIcon from '../assets/customSoftware.svg';
 import infoBackground from '../assets/infoBackground.svg';
 import revolutionBackground from '../assets/repeatingBackground.svg';
 import websitesIcon from '../assets/websiteIcon.svg';
