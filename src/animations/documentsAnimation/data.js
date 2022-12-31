@@ -1,6 +1,3 @@
-import img0 from "./img_0.png";
-import img1 from "./img_1.png";
-
 export default {
   v: "5.5.9",
   fr: 29.9700012207031,
@@ -11,8 +8,8 @@ export default {
   nm: "Digitail Documents and Data Animation",
   ddd: 0,
   assets: [
-    { id: "image_0", w: 372, h: 492, u: "", p: img0, e: 0 },
-    { id: "image_1", w: 604, h: 317, u: "", p: img1, e: 0 },
+    { id: "image_0", w: 372, h: 492, u: "", p: "/assets/documentsAnimation/img_0.png", e: 0 },
+    { id: "image_1", w: 604, h: 317, u: "", p: "/assets/documentsAnimation/img_1.png", e: 0 },
     {
       id: "comp_0",
       layers: [

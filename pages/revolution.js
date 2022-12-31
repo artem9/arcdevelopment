@@ -1,25 +1,16 @@
 import React from 'react';
+import Head from 'next/head';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import Lottie from './ui/Lottie';
+import Lottie from '../src/ui/Lottie';
 
-import build from '../assets/buildIcon.svg';
-import consultation from '../assets/consultationIcon.svg';
-import design from '../assets/designIcon.svg';
-import iterate from '../assets/iterateIcon.svg';
-import maintain from '../assets/maintainIcon.svg';
-import mockup from '../assets/mockupIcon.svg';
-import launch from '../assets/launchIcon.svg';
-import review from '../assets/reviewIcon.svg';
-import vision from '../assets/vision.svg';
-
-import technologyAnimation from '../animations/technologyAnimation/data.json';
+import technologyAnimation from '../src/animations/technologyAnimation/data.json';
 
 const useStyles = makeStyles()((theme) => ({
   rowContainer: {
@@ -40,9 +31,26 @@ export default function Revolution() {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          The Revolution - Cutting-Edge Software | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Visionary insights, coupled with cutting-edge technology, is a recipe for revolution. Get a free online estimate instantly!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | The Revolution"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/revolution" />
+        <link rel="canonical" key="canonical" href="arc.com/revolution" />
+      </Head>
       <Grid item className={classes.rowContainer} style={{ marginTop: '2em' }}>
         <Typography
-          variant="h2"
+          variant="h1"
           align={matchesLG ? 'center' : undefined}
           style={{ fontFamily: 'Pacifico' }}
         >
@@ -59,7 +67,7 @@ export default function Revolution() {
       >
         <Grid item lg>
           <img
-            src={vision}
+            src="/assets/vision.svg"
             alt="mountain through binoculars"
             style={{
               maxWidth: matchesMD ? 300 : '40em',
@@ -308,7 +316,7 @@ export default function Revolution() {
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img
-            src={consultation}
+            src="/assets/consultationIcon.svg"
             alt="handshake"
             width="100%"
             style={{ maxWidth: 700 }}
@@ -374,7 +382,7 @@ export default function Revolution() {
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img
-            src={mockup}
+            src="/assets/mockupIcon.svg"
             alt="basic website design outline"
             width="100%"
             style={{ maxWidth: 1000 }}
@@ -439,7 +447,11 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={review} alt="magnifying glass" width="100%" />
+          <img
+            src="/assets/reviewIcon.svg"
+            alt="magnifying glass"
+            width="100%"
+          />
         </Grid>
       </Grid>
       <Grid
@@ -492,7 +504,7 @@ export default function Revolution() {
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img
-            src={design}
+            src="/assets/designIcon.svg"
             alt="paintbrush leaving stroke of paint"
             width="100%"
             style={{ maxWidth: 1000 }}
@@ -547,7 +559,11 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={review} alt="magnifying glass" width="100%" />
+          <img
+            src="/assets/reviewIcon.svg"
+            alt="magnifying glass"
+            width="100%"
+          />
         </Grid>
       </Grid>
       <Grid
@@ -637,7 +653,7 @@ export default function Revolution() {
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img
-            src={build}
+            src="/assets/buildIcon.svg"
             alt="building construction site"
             width="100%"
             style={{ maxWidth: matchesLG ? 700 : 1000 }}
@@ -703,7 +719,7 @@ export default function Revolution() {
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img
-            src={launch}
+            src="/assets/launchIcon.svg"
             alt="rocket"
             width="100%"
             style={{ maxWidth: 200 }}
@@ -768,7 +784,7 @@ export default function Revolution() {
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img
-            src={maintain}
+            src="/assets/maintainIcon.svg"
             alt="wrench tightening bolts"
             width="100%"
             style={{ maxWidth: 500 }}
@@ -834,7 +850,11 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={iterate} alt="falling dominoes" width="100%" />
+          <img
+            src="/assets/iterateIcon.svg"
+            alt="falling dominoes"
+            width="100%"
+          />
         </Grid>
       </Grid>
     </Grid>

@@ -1,29 +1,23 @@
 import React from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
 import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
 
-import Lottie from './ui/Lottie';
-import CallToAction from './ui/CallToAction';
+import Link from '../src/Link';
+import Lottie from '../src/ui/Lottie';
+import CallToAction from '../src/ui/CallToAction';
 
-import backArrow from '../assets/backArrow.svg';
-import forwardArrow from '../assets/forwardArrow.svg';
-import lightbulb from '../assets/bulb.svg';
-import cash from '../assets/cash.svg';
-import stopwatch from '../assets/stopwatch.svg';
-import roots from '../assets/root.svg';
-
-import automationAnimation from '../animations/automationAnimation/data.json';
-import documentsAnimation from '../animations/documentsAnimation/data';
-import scaleAnimation from '../animations/scaleAnimation/data.json';
-import uxAnimation from '../animations/uxAnimation/data';
+import automationAnimation from '../src/animations/automationAnimation/data.json';
+import documentsAnimation from '../src/animations/documentsAnimation/data';
+import scaleAnimation from '../src/animations/scaleAnimation/data.json';
+import uxAnimation from '../src/animations/uxAnimation/data';
 
 const useStyles = makeStyles()((theme) => ({
   arrowContainer: {
@@ -54,6 +48,23 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          Custom Software Development and Design - Free Estimate
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Cutting-edge custom software development with gorgeous designs from scratch - let us optimize your business, solving problems instead of creating new ones."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Custom Software Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/customsoftware" />
+        <link rel="canonical" key="canonical" href="arc.com/customsoftware" />
+      </Head>
       <Grid
         item
         container
@@ -71,16 +82,16 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <IconButton
               style={{ backgroundColor: 'transparent' }}
               component={Link}
-              to="/services"
+              href="/services"
               onClick={() => setSelectedIndex(0)}
             >
-              <img alt="Back to Services Page" src={backArrow} />
+              <img alt="Back to Services Page" src="/assets/backArrow.svg" />
             </IconButton>
           </Grid>
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography align={matchesLG ? 'center' : undefined} variant="h2">
+            <Typography align={matchesLG ? 'center' : undefined} variant="h1">
               Custom Software Development
             </Typography>
           </Grid>
@@ -130,12 +141,12 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <IconButton
               style={{ backgroundColor: 'transparent' }}
               component={Link}
-              to="/mobileapps"
+              href="/mobileapps"
               onClick={() => setSelectedIndex(2)}
             >
               <img
                 alt="Forward to iOS/Android App Development Page"
-                src={forwardArrow}
+                src="/assets/forwardArrow.svg"
               />
             </IconButton>
           </Grid>
@@ -161,7 +172,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <Typography variant="h4">Save Energy</Typography>
           </Grid>
           <Grid item>
-            <img alt="lightbulb" src={lightbulb} />
+            <img alt="lightbulb" src="/assets/bulb.svg" />
           </Grid>
         </Grid>
         <Grid
@@ -180,7 +191,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <Typography variant="h4">Save Time</Typography>
           </Grid>
           <Grid item>
-            <img alt="stopwatch" src={stopwatch} />
+            <img alt="stopwatch" src="/assets/stopwatch.svg" />
           </Grid>
         </Grid>
         <Grid
@@ -195,7 +206,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
             <Typography variant="h4">Save Money</Typography>
           </Grid>
           <Grid item>
-            <img alt="cash" src={cash} />
+            <img alt="cash" src="/assets/cash.svg" />
           </Grid>
         </Grid>
       </Grid>
@@ -310,7 +321,7 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
           <Grid item>
             <img
               alt="tree with roots extending out"
-              src={roots}
+              src="/assets/root.svg"
               height={matchesMD ? '300em' : '450em'}
               width={matchesMD ? '300em' : '450em'}
             />

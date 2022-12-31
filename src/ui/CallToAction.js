@@ -1,29 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
 import ButtonArrow from './ButtonArrow';
-import background from '../../assets/background.jpg';
-import mobileBackground from '../../assets/mobileBackground.jpg';
+import Link from '../Link';
 
 const useStyles = makeStyles()((theme) => ({
   background: {
     backgroundAttachment: 'fixed',
-    backgroundImage: `url(${background})`,
+    backgroundImage: `url("/assets/background.jpg")`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '60em',
     width: '100%',
     [theme.breakpoints.down('md')]: {
-      backgroundImage: `url(${mobileBackground})`,
+      backgroundImage: `url("/assets/mobileBackground.jpg")`,
       backgroundAttachment: 'inherit',
     },
   },
@@ -77,7 +75,7 @@ function CallToAction({ setValue }) {
       >
         <Grid container direction="column">
           <Grid item>
-            <Typography variant="h2">
+            <Typography variant="h1">
               Simple Software.
               <br />
               Revolutionary Results.
@@ -95,7 +93,7 @@ function CallToAction({ setValue }) {
                 className={classes.learnButton}
                 onClick={() => setValue(2)}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
               >
                 <span style={{ marginRight: 5 }}>Learn More</span>
                 <ButtonArrow
@@ -114,7 +112,7 @@ function CallToAction({ setValue }) {
           className={classes.estimateButton}
           onClick={() => setValue(5)}
           component={Link}
-          to="/estimate"
+          href="/estimate"
         >
           Free Estimate
         </Button>

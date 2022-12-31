@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
+import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -15,12 +15,11 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Toolbar from '@mui/material/Toolbar';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
 
-import logo from '../../assets/logo.svg';
+import Link from '../Link';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -122,7 +121,8 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
+function Header(props) {
+  const { value, selectedIndex, setValue, setSelectedIndex } = props;
   const { classes } = useStyles();
   const theme = useTheme();
   const iOS =
@@ -130,7 +130,6 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
     /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const [openDrawer, setOpenDrawer] = useState(false);
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -200,7 +199,7 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
   useEffect(() => {
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
-        case route.link:
+        case `${route.link}`:
           if (value !== route.activeIndex) {
             setValue(route.activeIndex);
             if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
@@ -217,7 +216,8 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
           break;
       }
     });
-  }, [value, menuOptions, routes, selectedIndex, setValue, setSelectedIndex]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, selectedIndex, menuOptions, routes, props]);
 
   const tabs = (
     <>
@@ -237,7 +237,7 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
             label={route.name}
             onMouseOver={route.mouseOver}
             component={Link}
-            to={route.link}
+            href={route.link}
           />
         ))}
       </Tabs>
@@ -246,8 +246,8 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
         color="secondary"
         className={classes.button}
         component={Link}
-        to="/estimate"
-        onClick={() => setValue(false)}
+        href="/estimate"
+        onClick={() => setValue(null)}
       >
         Free Estimate
       </Button>
@@ -274,7 +274,7 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
           <MenuItem
             key={option.name}
             component={Link}
-            to={option.link}
+            href={option.link}
             classes={{ root: classes.menuItem }}
             onClick={(event) => {
               handleMenuItemClick(event, index);
@@ -313,7 +313,7 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
               selected={value === route.activeIndex}
               classes={{ selected: classes.drawerItemSelected }}
               component={Link}
-              to={route.link}
+              href={route.link}
             >
               <ListItemText className={classes.drawerItem} disableTypography>
                 {route.name}
@@ -332,7 +332,7 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
               selected: classes.drawerItemSelected,
             }}
             component={Link}
-            to="/estimate"
+            href="/estimate"
           >
             <ListItemText className={classes.drawerItem} disableTypography>
               Free Estimate
@@ -357,14 +357,15 @@ function Header({ selectedIndex, setSelectedIndex, value, setValue }) {
           <Toolbar disableGutters>
             <Button
               component={Link}
-              to="/"
+              href="/"
               className={classes.logoContainer}
               onClick={() => setValue(0)}
               disableRipple
             >
-              <img src={logo} className={classes.logo} alt="Logo" />
+              <img src="/assets/logo.svg" className={classes.logo} alt="Logo" />
             </Button>
-            {matches ? drawer : tabs}
+            <Hidden mdDown>{tabs}</Hidden>
+            <Hidden lgUp>{drawer}</Hidden>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

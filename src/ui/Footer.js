@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { makeStyles } from 'tss-react/mui';
 
@@ -7,10 +6,7 @@ import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
-import footerAdornment from '../../assets/footerAdornment.svg';
-import facebook from '../../assets/facebook.svg';
-import twitter from '../../assets/twitter.svg';
-import instagram from '../../assets/instagram.svg';
+import Link from '../Link';
 
 const useStyles = makeStyles()((theme) => ({
   adornment: {
@@ -80,7 +76,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(0)}
                 component={Link}
-                to="/"
+                href="/"
               >
                 Home
               </Grid>
@@ -96,7 +92,7 @@ function Footer({ setValue, setSelectedIndex }) {
                   setSelectedIndex(0);
                 }}
                 component={Link}
-                to="/services"
+                href="/services"
               >
                 Services
               </Grid>
@@ -108,7 +104,7 @@ function Footer({ setValue, setSelectedIndex }) {
                   setSelectedIndex(1);
                 }}
                 component={Link}
-                to="/customsoftware"
+                href="/customsoftware"
               >
                 Custom Software Development
               </Grid>
@@ -120,7 +116,7 @@ function Footer({ setValue, setSelectedIndex }) {
                   setSelectedIndex(2);
                 }}
                 component={Link}
-                to="/mobileapps"
+                href="/mobileapps"
               >
                 iOS/Android App Development
               </Grid>
@@ -132,7 +128,7 @@ function Footer({ setValue, setSelectedIndex }) {
                   setSelectedIndex(3);
                 }}
                 component={Link}
-                to="/websites"
+                href="/websites"
               >
                 Website Development
               </Grid>
@@ -145,7 +141,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(2)}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
               >
                 The revolution
               </Grid>
@@ -154,7 +150,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(2)}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
               >
                 Vision
               </Grid>
@@ -163,7 +159,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(2)}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
               >
                 Technology
               </Grid>
@@ -172,7 +168,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(2)}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
               >
                 Process
               </Grid>
@@ -185,7 +181,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(3)}
                 component={Link}
-                to="/about"
+                href="/about"
               >
                 About Us
               </Grid>
@@ -194,7 +190,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(3)}
                 component={Link}
-                to="/about"
+                href="/about"
               >
                 History
               </Grid>
@@ -203,7 +199,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(3)}
                 component={Link}
-                to="/about"
+                href="/about"
               >
                 Team
               </Grid>
@@ -216,7 +212,7 @@ function Footer({ setValue, setSelectedIndex }) {
                 className={classes.link}
                 onClick={() => setValue(4)}
                 component={Link}
-                to="/contact"
+                href="/contact"
               >
                 Contact Us
               </Grid>
@@ -226,7 +222,7 @@ function Footer({ setValue, setSelectedIndex }) {
       )}
 
       <img
-        src={footerAdornment}
+        src="/assets/footerAdornment.svg"
         alt="black decorative slash"
         className={classes.adornment}
       />
@@ -244,7 +240,11 @@ function Footer({ setValue, setSelectedIndex }) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img alt="facebook logo" src={facebook} className={classes.icon} />
+          <img
+            alt="facebook logo"
+            src="/assets/facebook.svg"
+            className={classes.icon}
+          />
         </Grid>
         <Grid
           item
@@ -253,7 +253,11 @@ function Footer({ setValue, setSelectedIndex }) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img alt="twitter logo" src={twitter} className={classes.icon} />
+          <img
+            alt="twitter logo"
+            src="/assets/twitter.svg"
+            className={classes.icon}
+          />
         </Grid>
         <Grid
           item
@@ -262,7 +266,11 @@ function Footer({ setValue, setSelectedIndex }) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img alt="instagram logo" src={instagram} className={classes.icon} />
+          <img
+            alt="instagram logo"
+            src="/assets/instagram.svg"
+            className={classes.icon}
+          />
         </Grid>
       </Grid>
     </footer>

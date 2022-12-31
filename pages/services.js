@@ -1,19 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import ButtonArrow from './ui/ButtonArrow';
-import customSoftwareIcon from '../assets/customSoftware.svg';
-import mobileAppsIcon from '../assets/mobileIcon.svg';
-import websitesIcon from '../assets/websiteIcon.svg';
+import ButtonArrow from '../src/ui/ButtonArrow';
+import Link from '../src/Link';
 
 const useStyles = makeStyles()((theme) => ({
   icon: {
@@ -53,6 +51,23 @@ function Services({ setValue, setSelectedIndex }) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          Top Custom Software Development Services | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Cutting-edge software, mobile app, and website development services with sleek custom designs - get a free online estimate instantly!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Services"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/services" />
+        <link rel="canonical" key="canonical" href="arc.com/services" />
+      </Head>
       <Grid
         item
         style={{
@@ -61,7 +76,7 @@ function Services({ setValue, setSelectedIndex }) {
         }}
       >
         <Typography
-          variant="h2"
+          variant="h1"
           align={matchesMD ? 'center' : undefined}
           gutterBottom
         >
@@ -100,7 +115,7 @@ function Services({ setValue, setSelectedIndex }) {
                 setSelectedIndex(2);
               }}
               component={Link}
-              to="/mobileapps"
+              href="/mobileapps"
             >
               <span style={{ marginRight: 10 }}>Learn More</span>
               <ButtonArrow
@@ -119,7 +134,7 @@ function Services({ setValue, setSelectedIndex }) {
             <img
               className={classes.icon}
               alt="mobile phone icon"
-              src={mobileAppsIcon}
+              src="/assets/mobileIcon.svg"
               width="250em"
             />
           </Grid>
@@ -156,7 +171,7 @@ function Services({ setValue, setSelectedIndex }) {
                 setSelectedIndex(1);
               }}
               component={Link}
-              to="/customsoftware"
+              href="/customsoftware"
             >
               <span style={{ marginRight: 10 }}>Learn More</span>
               <ButtonArrow
@@ -170,7 +185,7 @@ function Services({ setValue, setSelectedIndex }) {
             <img
               className={classes.icon}
               alt="custom software icon"
-              src={customSoftwareIcon}
+              src="/assets/customSoftware.svg"
             />
           </Grid>
         </Grid>
@@ -206,7 +221,7 @@ function Services({ setValue, setSelectedIndex }) {
                 setSelectedIndex(3);
               }}
               component={Link}
-              to="/websites"
+              href="/websites"
             >
               <span style={{ marginRight: 10 }}>Learn More</span>
               <ButtonArrow
@@ -220,7 +235,7 @@ function Services({ setValue, setSelectedIndex }) {
             <img
               className={classes.icon}
               alt="website icon"
-              src={websitesIcon}
+              src="/assets/websiteIcon.svg"
               width="250em"
             />
           </Grid>

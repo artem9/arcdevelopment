@@ -1,9 +1,3 @@
-import img0 from "./img_0.png";
-import img1 from "./img_1.png";
-import img2 from "./img_2.png";
-import img3 from "./img_3.png";
-import img4 from "./img_4.png";
-
 export default {
   v: "5.5.5",
   fr: 29.9700012207031,
@@ -19,7 +13,7 @@ export default {
       w: 173,
       h: 172,
       u: "",
-      p: img0,
+      p: "/assets/landingAnimation/img_0.png",
       e: 0
     },
     {
@@ -27,7 +21,7 @@ export default {
       w: 204,
       h: 154,
       u: "",
-      p: img1,
+      p: "/assets/landingAnimation/img_1.png",
       e: 0
     },
     {
@@ -35,7 +29,7 @@ export default {
       w: 182,
       h: 182,
       u: "",
-      p: img2,
+      p: "/assets/landingAnimation/img_2.png",
       e: 0
     },
     {
@@ -43,7 +37,7 @@ export default {
       w: 233,
       h: 89,
       u: "",
-      p: img3,
+      p: "/assets/landingAnimation/img_3.png",
       e: 0
     },
     {
@@ -51,7 +45,7 @@ export default {
       w: 1083,
       h: 366,
       u: "",
-      p: img4,
+      p: "/assets/landingAnimation/img_4.png",
       e: 0
     }
   ],

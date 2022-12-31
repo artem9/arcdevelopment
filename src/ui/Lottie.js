@@ -35,7 +35,6 @@ Lottie.defaultProps = {
 };
 
 Lottie.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   animationData: PropTypes.any.isRequired,
   loop: PropTypes.bool,
   autoplay: PropTypes.bool,

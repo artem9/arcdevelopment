@@ -1,6 +1,7 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,20 +9,16 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import Lottie from './ui/Lottie';
-import CallToAction from './ui/CallToAction';
+import Link from '../src/Link';
+import Lottie from '../src/ui/Lottie';
+import CallToAction from '../src/ui/CallToAction';
+import ButtonArrow from '../src/ui/ButtonArrow';
 
-import ButtonArrow from './ui/ButtonArrow';
-import animationData from '../animations/landinganimation/data';
-import mobileAppsIcon from '../assets/mobileIcon.svg';
-import customSoftwareIcon from '../assets/customSoftware.svg';
-import infoBackground from '../assets/infoBackground.svg';
-import revolutionBackground from '../assets/repeatingBackground.svg';
-import websitesIcon from '../assets/websiteIcon.svg';
+import animationData from '../src/animations/landingAnimation/data';
 
 const useStyles = makeStyles()((theme) => ({
   animation: {
@@ -54,7 +51,7 @@ const useStyles = makeStyles()((theme) => ({
     },
   },
   infoBackground: {
-    backgroundImage: `url(${infoBackground})`,
+    backgroundImage: `url("/assets/infoBackground.svg")`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -93,7 +90,7 @@ const useStyles = makeStyles()((theme) => ({
     },
   },
   revolutionBackground: {
-    backgroundImage: `url(${revolutionBackground})`,
+    backgroundImage: `url("/assets/repeatingBackground.svg")`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -137,6 +134,23 @@ function LandingPage({ setValue, setSelectedIndex }) {
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>
+      <Head>
+        <title key="title">
+          Custom Software, Mobile Apps, and Websites | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Pristine software custom-designed from the ground up with cutting-edge optimizations. Use our free estimate calculator to check your project cost!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Arc Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com" />
+        <link rel="canonical" key="canonical" href="arc.com" />
+      </Head>
       <Grid item>
         {/* -----Hero Block----- */}
         <Grid
@@ -146,7 +160,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
           direction="row"
         >
           <Grid sm item className={classes.heroTextContainer}>
-            <Typography align="center" variant="h2">
+            <Typography align="center" variant="h1">
               Bringing West Coast Technology
               <br />
               to the Midwest
@@ -162,7 +176,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                   variant="contained"
                   onClick={() => setValue(5)}
                   component={Link}
-                  to="/estimate"
+                  href="/estimate"
                 >
                   Free Estimate
                 </Button>
@@ -173,7 +187,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                   className={classes.learnButtonHero}
                   onClick={() => setValue(2)}
                   component={Link}
-                  to="/revolution"
+                  href="/revolution"
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
                   <ButtonArrow
@@ -225,7 +239,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                 setSelectedIndex(1);
               }}
               component={Link}
-              to="/customsoftware"
+              href="/customsoftware"
             >
               <span style={{ marginRight: 10 }}>Learn More</span>
               <ButtonArrow
@@ -239,7 +253,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
             <img
               className={classes.icon}
               alt="custom software icon"
-              src={customSoftwareIcon}
+              src="/assets/customSoftware.svg"
             />
           </Grid>
         </Grid>
@@ -274,7 +288,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                 setSelectedIndex(2);
               }}
               component={Link}
-              to="/mobileapps"
+              href="/mobileapps"
             >
               <span style={{ marginRight: 10 }}>Learn More</span>
               <ButtonArrow
@@ -293,7 +307,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
             <img
               className={classes.icon}
               alt="mobile phone icon"
-              src={mobileAppsIcon}
+              src="/assets/mobileIcon.svg"
             />
           </Grid>
         </Grid>
@@ -328,7 +342,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                 setSelectedIndex(3);
               }}
               component={Link}
-              to="/websites"
+              href="/websites"
             >
               <span style={{ marginRight: 10 }}>Learn More</span>
               <ButtonArrow
@@ -342,7 +356,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
             <img
               className={classes.icon}
               alt="website icon"
-              src={websitesIcon}
+              src="/assets/websiteIcon.svg"
             />
           </Grid>
         </Grid>
@@ -377,7 +391,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                     className={classes.learnButtonHero}
                     onClick={() => setValue(2)}
                     component={Link}
-                    to="/revolution"
+                    href="/revolution"
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow
@@ -420,7 +434,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                 direction="column"
                 style={{ marginBottom: matchesSM ? '10em' : 0 }}
               >
-                <Typography variant="h2" style={{ color: 'white' }}>
+                <Typography variant="h1" style={{ color: 'white' }}>
                   About Us
                 </Typography>
                 <Typography variant="subtitle2">
@@ -433,7 +447,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                     className={classes.learnButtonHero}
                     onClick={() => setValue(3)}
                     component={Link}
-                    to="/about"
+                    href="/about"
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow width={15} height={15} fill="white" />
@@ -450,7 +464,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
               }}
             >
               <Grid container direction="column">
-                <Typography variant="h2" style={{ color: 'white' }}>
+                <Typography variant="h1" style={{ color: 'white' }}>
                   Contact Us
                 </Typography>
                 <Typography variant="subtitle2">
@@ -466,7 +480,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
                     className={classes.learnButtonHero}
                     onClick={() => setValue(4)}
                     component={Link}
-                    to="/contact"
+                    href="/contact"
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow width={15} height={15} fill="white" />

@@ -1,7 +1,8 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -12,28 +13,23 @@ import Snackbar from '@mui/material/Snackbar';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import ButtonArrow from './ui/ButtonArrow';
-
-import background from '../assets/background.jpg';
-import mobileBackground from '../assets/mobileBackground.jpg';
-import phoneIcon from '../assets/phone.svg';
-import emailIcon from '../assets/email.svg';
-import airplane from '../assets/send.svg';
+import ButtonArrow from '../src/ui/ButtonArrow';
+import Link from '../src/Link';
 
 const useStyles = makeStyles()((theme) => ({
   background: {
-    backgroundImage: `url(${background})`,
+    backgroundImage: `url("/assets/background.jpg")`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '60em',
     paddingBottom: '10em',
     [theme.breakpoints.down('md')]: {
-      backgroundImage: `url(${mobileBackground})`,
+      backgroundImage: `url("/assets/mobileBackground.jpg")`,
     },
   },
   estimateButton: {
@@ -178,7 +174,11 @@ function Contact({ setValue }) {
   const buttonContents = (
     <>
       Send Message
-      <img src={airplane} alt="paper airplane" style={{ marginLeft: '1em' }} />
+      <img
+        src="/assets/send.svg"
+        alt="paper airplane"
+        style={{ marginLeft: '1em' }}
+      />
     </>
   );
 
@@ -190,6 +190,21 @@ function Contact({ setValue }) {
 
   return (
     <Grid container direction="row">
+      <Head>
+        <title key="title">Contact Us | Arc Development</title>
+        <meta
+          name="description"
+          key="description"
+          content="Let us guide you through the custom sofrware design and development process. Send us a message with any of your ideas or questions to get started!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Contact Us"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/contact" />
+        <link rel="canonical" key="canonical" href="arc.com/contact" />
+      </Head>
       <Grid
         item
         container
@@ -207,7 +222,7 @@ function Contact({ setValue }) {
           <Grid item container direction="column">
             <Grid item>
               <Typography
-                variant="h2"
+                variant="h1"
                 align={matchesLG ? 'center' : undefined}
                 style={{ lineHeight: 1 }}
               >
@@ -224,7 +239,7 @@ function Contact({ setValue }) {
             <Grid item container style={{ marginTop: '2em' }}>
               <Grid item>
                 <img
-                  src={phoneIcon}
+                  src="/assets/phone.svg"
                   alt="phone"
                   style={{ marginRight: '0.5em', verticalAlign: 'bottom' }}
                 />
@@ -246,7 +261,7 @@ function Contact({ setValue }) {
             <Grid item container style={{ marginBottom: '2em' }}>
               <Grid item>
                 <img
-                  src={emailIcon}
+                  src="/assets/email.svg"
                   alt="envelope"
                   style={{ marginRight: '0.5em', verticalAlign: 'bottom' }}
                 />
@@ -265,12 +280,7 @@ function Contact({ setValue }) {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid
-              item
-              container
-              direction="column"
-              style={{ width: '20em' }}
-            >
+            <Grid item container direction="column" style={{ width: '20em' }}>
               <Grid item style={{ marginBottom: '0.5em' }}>
                 <TextField
                   label="Name"
@@ -466,7 +476,7 @@ function Contact({ setValue }) {
         >
           <Grid container direction="column">
             <Grid item>
-              <Typography align={matchesMD ? 'center' : undefined} variant="h2">
+              <Typography align={matchesMD ? 'center' : undefined} variant="h1">
                 Simple Software.
                 <br />
                 Revolutionary Results.
@@ -488,7 +498,7 @@ function Contact({ setValue }) {
                   className={classes.learnButton}
                   onClick={() => setValue(2)}
                   component={Link}
-                  to="/revolution"
+                  href="/revolution"
                 >
                   <span style={{ marginRight: 5 }}>Learn More</span>
                   <ButtonArrow
@@ -507,7 +517,7 @@ function Contact({ setValue }) {
             className={classes.estimateButton}
             onClick={() => setValue(5)}
             component={Link}
-            to="/estimate"
+            href="/estimate"
           >
             Free Estimate
           </Button>

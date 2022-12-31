@@ -1,26 +1,21 @@
 import React from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
 import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import Lottie from './ui/Lottie';
-import CallToAction from './ui/CallToAction';
+import Link from '../src/Link';
+import Lottie from '../src/ui/Lottie';
+import CallToAction from '../src/ui/CallToAction';
 
-import access from '../assets/extendAccess.svg';
-import backArrow from '../assets/backArrow.svg';
-import engagement from '../assets/increaseEngagement.svg';
-import forwardArrow from '../assets/forwardArrow.svg';
-import swiss from '../assets/swissKnife.svg';
-
-import integrationAnimation from '../animations/integrationAnimation/data.json';
+import integrationAnimation from '../src/animations/integrationAnimation/data.json';
 
 const useStyles = makeStyles()((theme) => ({
   arrowContainer: {
@@ -48,6 +43,23 @@ function MobileApps({ setSelectedIndex, setValue }) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          iOS/Android App Design and Development | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Mobile Apps Made Easy | Our cutting-edge mobile app development proccess lets us build beautifully designed carefully crafted apps for both iOS and Android."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | iOS/Android App Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/mobileapps" />
+        <link rel="canonical" key="canonical" href="arc.com/mobileapps" />
+      </Head>
       <Grid
         item
         container
@@ -65,19 +77,19 @@ function MobileApps({ setSelectedIndex, setValue }) {
             <IconButton
               style={{ backgroundColor: 'transparent' }}
               component={Link}
-              to="/customsoftware"
+              href="/customsoftware"
               onClick={() => setSelectedIndex(1)}
             >
               <img
                 alt="Back to Custom Software Development Page"
-                src={backArrow}
+                src="/assets/backArrow.svg"
               />
             </IconButton>
           </Grid>
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography align={matchesLG ? 'center' : undefined} variant="h2">
+            <Typography align={matchesLG ? 'center' : undefined} variant="h1">
               iOS/Android App Development
             </Typography>
           </Grid>
@@ -114,12 +126,12 @@ function MobileApps({ setSelectedIndex, setValue }) {
             <IconButton
               style={{ backgroundColor: 'transparent' }}
               component={Link}
-              to="/websites"
+              href="/websites"
               onClick={() => setSelectedIndex(3)}
             >
               <img
                 alt="Forward to Website Development Page"
-                src={forwardArrow}
+                src="/assets/forwardArrow.svg"
               />
             </IconButton>
           </Grid>
@@ -217,7 +229,7 @@ function MobileApps({ setSelectedIndex, setValue }) {
             </Typography>
           </Grid>
           <Grid item>
-            <img src={swiss} alt="swiss army knife" />
+            <img src="/assets/swissKnife.svg" alt="swiss army knife" />
           </Grid>
         </Grid>
         <Grid
@@ -238,7 +250,7 @@ function MobileApps({ setSelectedIndex, setValue }) {
           </Grid>
           <Grid item>
             <img
-              src={access}
+              src="/assets/extendAccess.svg"
               alt="tear-one-off sign"
               style={{ maxWidth: matchesSM ? '20em' : '28em' }}
             />
@@ -251,7 +263,10 @@ function MobileApps({ setSelectedIndex, setValue }) {
             </Typography>
           </Grid>
           <Grid item>
-            <img src={engagement} alt="app with notification" />
+            <img
+              src="/assets/increaseEngagement.svg"
+              alt="app with notification"
+            />
           </Grid>
         </Grid>
       </Grid>

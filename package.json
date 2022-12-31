@@ -1,52 +1,42 @@
 {
   "name": "arcdevelopment",
-  "version": "0.1.0",
+  "version": "5.0.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postbuild": "node scripts/sitemap.js",
+    "clean": "npx rimraf .next"
+  },
   "dependencies": {
-    "@emotion/react": "11.10.5",
-    "@emotion/styled": "11.10.5",
+    "@emotion/cache": "11.10.05",
+    "@emotion/react": "11.10.05",
+    "@emotion/server": "11.10.0",
+    "@emotion/styled": "11.10.05",
     "@mui/icons-material": "5.11.0",
     "@mui/material": "5.11.2",
-    "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "13.4.0",
-    "@testing-library/user-event": "14.4.3",
-    "axios": "1.2.1",
+    "@next/font": "13.1.1",
+    "axios": "1.2.2",
+    "clsx": "1.2.1",
+    "fs-extra": "11.1.0",
+    "imagemin-mozjpeg": "9.0.0",
+    "imagemin-optipng": "8.0.0",
     "lodash": "4.17.21",
     "lottie-web": "5.10.0",
+    "next": "13.1.1",
+    "next-compose-plugins": "2.2.1",
+    "next-optimized-images": "2.6.2",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.4.4",
-    "react-scripts": "5.0.1",
-    "tss-react": "4.5.1",
-    "web-vitals": "2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "tss-react": "4.5.1"
   },
   "devDependencies": {
+    "eslint": "8.31.0",
     "eslint-config-airbnb": "19.0.4",
+    "eslint-config-next": "13.1.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.6.1",

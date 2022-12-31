@@ -1,4 +1,6 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
+import Head from 'next/head';
 import { cloneDeep } from 'lodash';
 import axios from 'axios';
 
@@ -13,38 +15,12 @@ import Snackbar from '@mui/material/Snackbar';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import Lottie from './ui/Lottie';
-
-import android from '../assets/android.svg';
-import backArrow from '../assets/backArrow.svg';
-import backArrowDisabled from '../assets/backArrowDisabled.svg';
-import bell from '../assets/bell.svg';
-import biometrics from '../assets/biometrics.svg';
-import camera from '../assets/camera.svg';
-import check from '../assets/check.svg';
-import customized from '../assets/customized.svg';
-import data from '../assets/data.svg';
-import forwardArrow from '../assets/forwardArrow.svg';
-import forwardArrowDisabled from '../assets/forwardArrowDisabled.svg';
-import globe from '../assets/globe.svg';
-import gps from '../assets/gps.svg';
-import info from '../assets/info.svg';
-import iphone from '../assets/iphone.svg';
-import mobile from '../assets/mobile.svg';
-import people from '../assets/people.svg';
-import person from '../assets/person.svg';
-import persons from '../assets/persons.svg';
-import send from '../assets/send.svg';
-import software from '../assets/software.svg';
-import upload from '../assets/upload.svg';
-import users from '../assets/users.svg';
-import website from '../assets/website.svg';
-
-import estimateAnimation from '../animations/estimateAnimation/data.json';
+import Lottie from '../src/ui/Lottie';
+import estimateAnimation from '../src/animations/estimateAnimation/data.json';
 
 const useStyles = makeStyles()((theme) => ({
   icon: {
@@ -87,7 +63,7 @@ const defaultQuestions = [
         id: 1,
         title: 'Custom Software Development',
         subtitle: null,
-        icon: software,
+        icon: '/assets/software.svg',
         iconAlt: 'three floating screens',
         selected: false,
         cost: 0,
@@ -96,7 +72,7 @@ const defaultQuestions = [
         id: 2,
         title: 'iOS/Android App Development',
         subtitle: null,
-        icon: mobile,
+        icon: '/assets/mobile.svg',
         iconAlt: 'phones and tablet outline',
         selected: false,
         cost: 0,
@@ -105,7 +81,7 @@ const defaultQuestions = [
         id: 3,
         title: 'Website Development',
         subtitle: null,
-        icon: website,
+        icon: '/assets/website.svg',
         iconAlt: 'computer outline',
         selected: false,
         cost: 0,
@@ -125,7 +101,7 @@ const softwareQuestions = [
         id: 1,
         title: 'Web Application',
         subtitle: null,
-        icon: website,
+        icon: '/assets/website.svg',
         iconAlt: 'computer outline',
         selected: false,
         cost: 100,
@@ -134,7 +110,7 @@ const softwareQuestions = [
         id: 2,
         title: 'iOS Application',
         subtitle: null,
-        icon: iphone,
+        icon: '/assets/iphone.svg',
         iconAlt: 'outline of iphone',
         selected: false,
         cost: 100,
@@ -143,7 +119,7 @@ const softwareQuestions = [
         id: 3,
         title: 'Android Application',
         subtitle: null,
-        icon: android,
+        icon: '/assets/android.svg',
         iconAlt: 'outlines of android phone',
         selected: false,
         cost: 100,
@@ -160,7 +136,7 @@ const softwareQuestions = [
         id: 1,
         title: 'Photo/Video',
         subtitle: null,
-        icon: camera,
+        icon: '/assets/camera.svg',
         iconAlt: 'camera outline',
         selected: false,
         cost: 25,
@@ -169,7 +145,7 @@ const softwareQuestions = [
         id: 2,
         title: 'GPS',
         subtitle: null,
-        icon: gps,
+        icon: '/assets/gps.svg',
         iconAlt: 'gps pin',
         selected: false,
         cost: 25,
@@ -178,7 +154,7 @@ const softwareQuestions = [
         id: 3,
         title: 'File Transfer',
         subtitle: null,
-        icon: upload,
+        icon: '/assets/upload.svg',
         iconAlt: 'outline of cloud with arrow pointing up',
         selected: false,
         cost: 25,
@@ -195,7 +171,7 @@ const softwareQuestions = [
         id: 1,
         title: 'Users/Authentication',
         subtitle: null,
-        icon: users,
+        icon: '/assets/users.svg',
         iconAlt: 'outline of a person with a plus sign',
         selected: false,
         cost: 25,
@@ -204,7 +180,7 @@ const softwareQuestions = [
         id: 2,
         title: 'Biometrics',
         subtitle: null,
-        icon: biometrics,
+        icon: '/assets/biometrics.svg',
         iconAlt: 'fingerprint',
         selected: false,
         cost: 25,
@@ -213,7 +189,7 @@ const softwareQuestions = [
         id: 3,
         title: 'Push Notifications',
         subtitle: null,
-        icon: bell,
+        icon: '/assets/bell.svg',
         iconAlt: 'outline of a bell',
         selected: false,
         cost: 25,
@@ -230,7 +206,7 @@ const softwareQuestions = [
         id: 1,
         title: 'Low Complexity',
         subtitle: '(Informational)',
-        icon: info,
+        icon: '/assets/info.svg',
         iconAlt: "'i' inside a circle",
         selected: false,
         cost: 25,
@@ -239,7 +215,7 @@ const softwareQuestions = [
         id: 2,
         title: 'Medium Complexity',
         subtitle: '(Interactive, Customizable, Realtime)',
-        icon: customized,
+        icon: '/assets/customized.svg',
         iconAlt: 'two toggle switches',
         selected: false,
         cost: 50,
@@ -248,7 +224,7 @@ const softwareQuestions = [
         id: 3,
         title: 'High Complexity',
         subtitle: '(Data Modeling and Computation)',
-        icon: data,
+        icon: '/assets/data.svg',
         iconAlt: 'outline of line graph',
         selected: false,
         cost: 100,
@@ -265,7 +241,7 @@ const softwareQuestions = [
         id: 1,
         title: '0-10',
         subtitle: null,
-        icon: person,
+        icon: '/assets/person.svg',
         iconAlt: 'person outline',
         selected: false,
         cost: 1,
@@ -274,7 +250,7 @@ const softwareQuestions = [
         id: 2,
         title: '10-100',
         subtitle: null,
-        icon: persons,
+        icon: '/assets/persons.svg',
         iconAlt: 'outline of two people',
         selected: false,
         cost: 1.25,
@@ -283,7 +259,7 @@ const softwareQuestions = [
         id: 3,
         title: '100+',
         subtitle: null,
-        icon: people,
+        icon: '/assets/people.svg',
         iconAlt: 'outline of three people',
         selected: false,
         cost: 1.5,
@@ -304,7 +280,7 @@ const websiteQuestions = [
         id: 1,
         title: 'Basic',
         subtitle: '(Informational)',
-        icon: info,
+        icon: '/assets/info.svg',
         iconAlt: 'person outline',
         selected: false,
         cost: 100,
@@ -313,7 +289,7 @@ const websiteQuestions = [
         id: 2,
         title: 'Interactive',
         subtitle: "(Users, API's, Messaging)",
-        icon: customized,
+        icon: '/assets/customized.svg',
         iconAlt: 'outline of two people',
         selected: false,
         cost: 200,
@@ -322,7 +298,7 @@ const websiteQuestions = [
         id: 3,
         title: 'E-Commerce',
         subtitle: '(Sales)',
-        icon: globe,
+        icon: '/assets/globe.svg',
         iconAlt: 'outline of three people',
         selected: false,
         cost: 250,
@@ -623,6 +599,7 @@ export default function Estimate() {
         });
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.error(err);
         setLoading(false);
         setAlert({
@@ -673,7 +650,7 @@ export default function Estimate() {
         style={{ marginBottom: '1.25em' }}
       >
         <Grid item xs={2}>
-          <img src={check} alt="checkmark" />
+          <img src="/assets/check.svg" alt="checkmark" />
         </Grid>
         <Grid item xs={10}>
           <Typography variant="body1">
@@ -715,7 +692,7 @@ export default function Estimate() {
         style={{ marginBottom: '1.25em' }}
       >
         <Grid item xs={2}>
-          <img src={check} alt="checkmark" />
+          <img src="/assets/check.svg" alt="checkmark" />
         </Grid>
         <Grid item xs={10}>
           <Typography variant="body1">
@@ -748,7 +725,7 @@ export default function Estimate() {
       </Grid>
       <Grid item container alignItems="center">
         <Grid item xs={2}>
-          <img src={check} alt="checkmark" />
+          <img src="/assets/check.svg" alt="checkmark" />
         </Grid>
         <Grid item xs={10}>
           <Typography variant="body1">
@@ -764,7 +741,7 @@ export default function Estimate() {
     <Grid container direction="column" style={{ marginTop: '14em' }}>
       <Grid item container alignItems="center">
         <Grid item xs={2}>
-          <img src={check} alt="checkmark" />
+          <img src="/assets/check.svg" alt="checkmark" />
         </Grid>
         <Grid item xs={10}>
           <Typography variant="body1">
@@ -780,6 +757,23 @@ export default function Estimate() {
 
   return (
     <Grid container direction="row">
+      <Head>
+        <title key="title">
+          Free Custom Software Estimate | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Use our free online estimate calculator to instantly check the cost of your custom software, mobile app, or website design and development project! "
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Free Estimate"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/estimate" />
+        <link rel="canonical" key="canonical" href="arc.com/estimate" />
+      </Head>
       <Grid
         item
         container
@@ -791,7 +785,7 @@ export default function Estimate() {
           item
           style={{ marginTop: '2em', marginLeft: matchesLG ? 0 : '5em' }}
         >
-          <Typography variant="h2" align={matchesLG ? 'center' : undefined}>
+          <Typography variant="h1" align={matchesLG ? 'center' : undefined}>
             Estimate
           </Typography>
         </Grid>
@@ -825,7 +819,7 @@ export default function Estimate() {
             <React.Fragment key={question.title}>
               <Grid item>
                 <Typography
-                  variant="h2"
+                  variant="h1"
                   align="center"
                   style={{
                     fontWeight: 500,
@@ -904,7 +898,9 @@ export default function Estimate() {
             >
               <img
                 src={
-                  navigationPreviousDisabled() ? backArrowDisabled : backArrow
+                  navigationPreviousDisabled()
+                    ? '/assets/backArrowDisabled.svg'
+                    : '/assets/backArrow.svg'
                 }
                 alt="Previous question"
               />
@@ -917,7 +913,9 @@ export default function Estimate() {
             >
               <img
                 src={
-                  navigationNextDisabled() ? forwardArrowDisabled : forwardArrow
+                  navigationNextDisabled()
+                    ? '/assets/forwardArrowDisabled.svg'
+                    : '/assets/forwardArrow.svg'
                 }
                 alt="Next question"
               />
@@ -952,7 +950,7 @@ export default function Estimate() {
       >
         <Grid container justifyContent="center">
           <Grid item style={{ marginTop: '1em', marginBottom: '1em' }}>
-            <Typography variant="h2" align="center">
+            <Typography variant="h1" align="center">
               Estimate
             </Typography>
           </Grid>
@@ -1068,7 +1066,7 @@ export default function Estimate() {
                     <>
                       Place Request
                       <img
-                        src={send}
+                        src="/assets/send.svg"
                         alt="paper airplane"
                         style={{ marginLeft: '0.5em' }}
                       />

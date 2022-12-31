@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 
 import Avatar from '@mui/material/Avatar';
@@ -6,16 +7,11 @@ import Grid from '@mui/material/Grid';
 import Hidden from '@mui/material/Hidden';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import CallToAction from './ui/CallToAction';
-
-import history from '../assets/history.svg';
-import profile from '../assets/founder.jpg';
-import yearbook from '../assets/yearbook.svg';
-import puppy from '../assets/puppy.svg';
+import CallToAction from '../src/ui/CallToAction';
 
 const useStyles = makeStyles()((theme) => ({
   avatar: {
@@ -52,12 +48,27 @@ function About({ setValue }) {
 
   return (
     <Grid container direction="row">
+      <Head>
+        <title key="title">About Us - History & Team | Arc Development</title>
+        <meta
+          name="description"
+          key="description"
+          content="We provide the fastest, most modern, affordable, and aesthetic software design and development services in the Midwest. Get a free online estimate now!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | About Us"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/about" />
+        <link rel="canonical" key="canonical" href="arc.com/about" />
+      </Head>
       <Grid
         item
         className={classes.rowContainer}
         style={{ marginTop: matchesLG ? '1em' : '2em' }}
       >
-        <Typography variant="h2" align={matchesLG ? 'center' : undefined}>
+        <Typography variant="h1" align={matchesLG ? 'center' : undefined}>
           About Us
         </Typography>
       </Grid>
@@ -160,7 +171,7 @@ function About({ setValue }) {
         <Grid item>
           <Grid item container justifyContent="center" lg>
             <img
-              src={history}
+              src="/assets/history.svg"
               alt="quill pen sitting on top of book"
               style={{ maxHeight: matchesLG ? 200 : '22em' }}
             />
@@ -189,7 +200,11 @@ function About({ setValue }) {
           </Typography>
         </Grid>
         <Grid item>
-          <Avatar alt="founder" src={profile} className={classes.avatar} />
+          <Avatar
+            alt="founder"
+            src="/assets/founder.jpg"
+            className={classes.avatar}
+          />
         </Grid>
         <Grid item container justifyContent={matchesLG ? 'center' : undefined}>
           <Hidden lgUp>
@@ -216,7 +231,7 @@ function About({ setValue }) {
           >
             <Grid item>
               <img
-                src={yearbook}
+                src="/assets/yearbook.svg"
                 alt="yearbook page about founder"
                 style={{ maxWidth: matchesLG ? 300 : undefined }}
               />
@@ -250,7 +265,7 @@ function About({ setValue }) {
           >
             <Grid item>
               <img
-                src={puppy}
+                src="/assets/puppy.svg"
                 alt="grey spotted poppy"
                 style={{ maxWidth: matchesLG ? 300 : undefined }}
               />

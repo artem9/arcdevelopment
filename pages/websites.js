@@ -1,24 +1,18 @@
 import React from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
 import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import useTheme from '@mui/material/styles/useTheme';
+import { useTheme } from '@mui/material/styles';
 
 import { makeStyles } from 'tss-react/mui';
 
-import CallToAction from './ui/CallToAction';
-
-import analytics from '../assets/analytics.svg';
-import backArrow from '../assets/backArrow.svg';
-import ecommerce from '../assets/ecommerce.svg';
-import forwardArrow from '../assets/forwardArrow.svg';
-import outreach from '../assets/outreach.svg';
-import seo from '../assets/seo.svg';
+import CallToAction from '../src/ui/CallToAction';
+import Link from '../src/Link';
 
 const useStyles = makeStyles()((theme) => ({
   arrowContainer: {
@@ -49,6 +43,23 @@ function Websites({ setSelectedIndex, setValue }) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          Stunning Custom Website Design | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Completely custom designed and built from scratch to be blazing fast. Optimized code, server-side rendering, and perfect responsive design | 99% PageSpeed Score"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Websites"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/websites" />
+        <link rel="canonical" key="canonical" href="arc.com/websites" />
+      </Head>
       <Grid
         item
         container
@@ -66,19 +77,19 @@ function Websites({ setSelectedIndex, setValue }) {
             <IconButton
               style={{ backgroundColor: 'transparent' }}
               component={Link}
-              to="/mobileapps"
+              href="/mobileapps"
               onClick={() => setSelectedIndex(2)}
             >
               <img
                 alt="Back to iOS/Android App Development Page"
-                src={backArrow}
+                src="/assets/backArrow.svg"
               />
             </IconButton>
           </Grid>
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography align={matchesLG ? 'center' : undefined} variant="h2">
+            <Typography align={matchesLG ? 'center' : undefined} variant="h1">
               Website Development
             </Typography>
           </Grid>
@@ -108,10 +119,13 @@ function Websites({ setSelectedIndex, setValue }) {
             <IconButton
               style={{ backgroundColor: 'transparent' }}
               component={Link}
-              to="/services"
+              href="/services"
               onClick={() => setSelectedIndex(0)}
             >
-              <img alt="Forward to Services Page" src={forwardArrow} />
+              <img
+                alt="Forward to Services Page"
+                src="/assets/forwardArrow.svg"
+              />
             </IconButton>
           </Grid>
         </Hidden>
@@ -137,7 +151,7 @@ function Websites({ setSelectedIndex, setValue }) {
             </Grid>
             <Grid item>
               <img
-                src={analytics}
+                src="/assets/analytics.svg"
                 style={{ marginLeft: '-2.75em' }}
                 alt="graph with magnifying glass revealing 1's and 0's"
               />
@@ -169,7 +183,10 @@ function Websites({ setSelectedIndex, setValue }) {
               </Typography>
             </Grid>
             <Grid item>
-              <img src={ecommerce} alt="world outline made of dollar signs" />
+              <img
+                src="/assets/ecommerce.svg"
+                alt="world outline made of dollar signs"
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -214,7 +231,7 @@ function Websites({ setSelectedIndex, setValue }) {
               </Typography>
             </Grid>
             <Grid item>
-              <img src={outreach} alt="megaphone" />
+              <img src="/assets/outreach.svg" alt="megaphone" />
             </Grid>
           </Grid>
         </Grid>
@@ -249,7 +266,10 @@ function Websites({ setSelectedIndex, setValue }) {
               </Typography>
             </Grid>
             <Grid item>
-              <img src={seo} alt="website standing on winner's podium" />
+              <img
+                src="/assets/seo.svg"
+                alt="website standing on winner's podium"
+              />
             </Grid>
           </Grid>
         </Grid>
