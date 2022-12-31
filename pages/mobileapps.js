@@ -179,7 +179,10 @@ function MobileApps({ setSelectedIndex, setValue }) {
             <Grid item>
               <Lottie
                 animationData={integrationAnimation}
-                style={{ maxWidth: '20em' }}
+                style={{
+                  maxWidth: matchesMD ? '15em' : '20em',
+                  height: matchesMD ? '20em' : undefined,
+                }}
                 autoplay
               />
             </Grid>
@@ -220,7 +223,7 @@ function MobileApps({ setSelectedIndex, setValue }) {
         container
         direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
-        style={{ marginBottom: '15em' }}
+        style={{ marginBottom: '15em', display: matchesLG ? 'grid' : undefined }}
       >
         <Grid item container direction="column" alignItems="center" md>
           <Grid item>
