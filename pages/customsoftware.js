@@ -216,7 +216,8 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
         alignItems={matchesLG ? 'center' : undefined}
         className={classes.rowContainer}
         direction={matchesLG ? 'column' : 'row'}
-        justifyContent="space-around"
+        justifyContent={matchesMD ? 'center' : 'space-between'}
+        style={{ display: matchesLG ? 'grid' : undefined }}
       >
         <Grid
           item
@@ -347,8 +348,11 @@ function CustomSoftware({ setSelectedIndex, setValue }) {
         alignItems={matchesLG ? 'center' : undefined}
         className={classes.rowContainer}
         direction={matchesLG ? 'column' : 'row'}
-        justifyContent="space-around"
-        style={{ marginBottom: '20em' }}
+        justifyContent={matchesMD ? 'center' : 'space-between'}
+        style={{
+          marginBottom: '20em',
+          display: matchesLG ? 'grid' : undefined,
+        }}
       >
         <Grid
           item

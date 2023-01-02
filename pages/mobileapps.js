@@ -223,7 +223,10 @@ function MobileApps({ setSelectedIndex, setValue }) {
         container
         direction={matchesLG ? 'column' : 'row'}
         className={classes.rowContainer}
-        style={{ marginBottom: '15em', display: matchesLG ? 'grid' : undefined }}
+        style={{
+          marginBottom: '15em',
+          display: matchesLG ? 'grid' : undefined,
+        }}
       >
         <Grid item container direction="column" alignItems="center" md>
           <Grid item>

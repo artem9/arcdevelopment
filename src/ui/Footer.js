@@ -70,7 +70,12 @@ function Footer({ setValue, setSelectedIndex }) {
           className={classes.mainContainer}
         >
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              style={{ margin: 0 }}
+              spacing={2}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -83,7 +88,12 @@ function Footer({ setValue, setSelectedIndex }) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              style={{ margin: 0 }}
+              spacing={2}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -135,7 +145,12 @@ function Footer({ setValue, setSelectedIndex }) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              style={{ margin: 0 }}
+              spacing={2}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -175,7 +190,12 @@ function Footer({ setValue, setSelectedIndex }) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              style={{ margin: 0 }}
+              spacing={2}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -206,7 +226,12 @@ function Footer({ setValue, setSelectedIndex }) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              style={{ margin: 0 }}
+              spacing={2}
+            >
               <Grid
                 item
                 className={classes.link}
