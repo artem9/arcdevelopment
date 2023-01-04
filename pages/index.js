@@ -18,7 +18,7 @@ import Lottie from '../src/ui/Lottie';
 import CallToAction from '../src/ui/CallToAction';
 import ButtonArrow from '../src/ui/ButtonArrow';
 
-import animationData from '../src/animations/landingAnimation/data';
+import animationData from '../src/animations/landinganimation/data';
 
 const useStyles = makeStyles()((theme) => ({
   animation: {
