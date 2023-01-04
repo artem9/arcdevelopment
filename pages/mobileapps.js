@@ -57,8 +57,8 @@ function MobileApps({ setSelectedIndex, setValue }) {
           content="Bringing West Coast Technology to the Midwest | iOS/Android App Development"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com/mobileapps" />
-        <link rel="canonical" key="canonical" href="arc.com/mobileapps" />
+        <meta property="og:url" key="og:url" content="arcdevelopment-artem9.vercel.app/mobileapps" />
+        <link rel="canonical" key="canonical" href="arcdevelopment-artem9.vercel.app/mobileapps" />
       </Head>
       <Grid
         item

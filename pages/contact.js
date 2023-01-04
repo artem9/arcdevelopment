@@ -202,8 +202,8 @@ function Contact({ setValue }) {
           content="Bringing West Coast Technology to the Midwest | Contact Us"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com/contact" />
-        <link rel="canonical" key="canonical" href="arc.com/contact" />
+        <meta property="og:url" key="og:url" content="arcdevelopment-artem9.vercel.app/contact" />
+        <link rel="canonical" key="canonical" href="arcdevelopment-artem9.vercel.app/contact" />
       </Head>
       <Grid
         item

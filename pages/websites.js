@@ -57,8 +57,8 @@ function Websites({ setSelectedIndex, setValue }) {
           content="Bringing West Coast Technology to the Midwest | Websites"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com/websites" />
-        <link rel="canonical" key="canonical" href="arc.com/websites" />
+        <meta property="og:url" key="og:url" content="arcdevelopment-artem9.vercel.app/websites" />
+        <link rel="canonical" key="canonical" href="arcdevelopment-artem9.vercel.app/websites" />
       </Head>
       <Grid
         item

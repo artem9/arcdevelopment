@@ -148,8 +148,8 @@ function LandingPage({ setValue, setSelectedIndex }) {
           content="Bringing West Coast Technology to the Midwest | Arc Development"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com" />
-        <link rel="canonical" key="canonical" href="arc.com" />
+        <meta property="og:url" key="og:url" content="arcdevelopment-artem9.vercel.app" />
+        <link rel="canonical" key="canonical" href="arcdevelopment-artem9.vercel.app" />
       </Head>
       <Grid item>
         {/* -----Hero Block----- */}

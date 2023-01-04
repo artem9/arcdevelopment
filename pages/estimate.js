@@ -771,8 +771,8 @@ export default function Estimate() {
           content="Bringing West Coast Technology to the Midwest | Free Estimate"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arc.com/estimate" />
-        <link rel="canonical" key="canonical" href="arc.com/estimate" />
+        <meta property="og:url" key="og:url" content="arcdevelopment-artem9.vercel.app/estimate" />
+        <link rel="canonical" key="canonical" href="arcdevelopment-artem9.vercel.app/estimate" />
       </Head>
       <Grid
         item
