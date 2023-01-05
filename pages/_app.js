@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactGA from 'react-ga4';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
@@ -12,6 +13,8 @@ import Footer from '../src/ui/Footer';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
+
+ReactGA.initialize('G-Q0C90DGJZE');
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;

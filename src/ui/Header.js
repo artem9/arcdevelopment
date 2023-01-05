@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import ReactGA from 'react-ga4';
 import { PropTypes } from 'prop-types';
 
 import AppBar from '@mui/material/AppBar';
@@ -135,6 +136,8 @@ function Header(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
 
+  const [previousUrl, setPreviousUrl] = useState('');
+
   const handleChange = (e, newValue) => {
     setValue(newValue);
   };
@@ -199,6 +202,14 @@ function Header(props) {
   );
 
   useEffect(() => {
+    if (previousUrl !== window.location.pathname) {
+      setPreviousUrl(window.location.pathname);
+      ReactGA.send({
+        hitType: 'pageview',
+        page: 'window.location.pathname + window.location.search',
+      });
+    }
+
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
         case `${route.link}`:
