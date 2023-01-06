@@ -141,7 +141,7 @@ function Contact({ setValue }) {
 
   const onConfirm = () => {
     setLoading(true);
-    gaEvent('send_message', {
+    gaEvent('message_sent', {
       browser_type: matchesSM ? 'mobile' : 'desktop',
       category: 'contact',
     });

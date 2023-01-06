@@ -570,7 +570,7 @@ export default function Estimate() {
 
   const sendEstimate = () => {
     setLoading(true);
-    gaEvent('send_message', {
+    gaEvent('estimate_sent', {
       browser_type: matchesSM ? 'mobile' : 'desktop',
       category: 'estimate',
     });
