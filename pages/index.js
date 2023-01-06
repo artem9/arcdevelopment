@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
+import { event as gaEvent } from 'nextjs-google-analytics';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
@@ -148,8 +149,16 @@ function LandingPage({ setValue, setSelectedIndex }) {
           content="Bringing West Coast Technology to the Midwest | Arc Development"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arcdevelopment-artem9.vercel.app" />
-        <link rel="canonical" key="canonical" href="arcdevelopment-artem9.vercel.app" />
+        <meta
+          property="og:url"
+          key="og:url"
+          content="arcdevelopment-artem9.vercel.app"
+        />
+        <link
+          rel="canonical"
+          key="canonical"
+          href="arcdevelopment-artem9.vercel.app"
+        />
       </Head>
       <Grid item>
         {/* -----Hero Block----- */}
@@ -174,7 +183,14 @@ function LandingPage({ setValue, setSelectedIndex }) {
                 <Button
                   className={classes.estimateButton}
                   variant="contained"
-                  onClick={() => setValue(5)}
+                  onClick={() => {
+                    setValue(5);
+                    gaEvent('open_estimate', {
+                      browser_type: matchesSM ? 'mobile' : 'desktop',
+                      category: 'estimate',
+                      from_page: window.location.pathname,
+                    });
+                  }}
                   component={Link}
                   href="/estimate"
                 >

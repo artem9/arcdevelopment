@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PropTypes } from 'prop-types';
+import { event as gaEvent } from 'nextjs-google-analytics';
 
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
@@ -15,6 +16,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Toolbar from '@mui/material/Toolbar';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
@@ -127,6 +129,7 @@ function Header(props) {
   const { value, selectedIndex, setValue, setSelectedIndex } = props;
   const { classes } = useStyles();
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const iOS =
     typeof navigator !== 'undefined' &&
     /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -249,7 +252,14 @@ function Header(props) {
         className={classes.button}
         component={Link}
         href="/estimate"
-        onClick={() => setValue(null)}
+        onClick={() => {
+          setValue(5);
+          gaEvent('open_estimate', {
+            browser_type: matchesSM ? 'mobile' : 'desktop',
+            category: 'estimate',
+            from_page: window.location.pathname,
+          });
+        }}
       >
         Free Estimate
       </Button>
@@ -327,6 +337,11 @@ function Header(props) {
             onClick={() => {
               setOpenDrawer(false);
               setValue(5);
+              gaEvent('open_estimate', {
+                browser_type: 'mobile',
+                category: 'estimate',
+                from_page: window.location.pathname,
+              });
             }}
             selected={value === 5}
             classes={{

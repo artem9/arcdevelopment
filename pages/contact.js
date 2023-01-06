@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
+import { event as gaEvent } from 'nextjs-google-analytics';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -140,6 +141,10 @@ function Contact({ setValue }) {
 
   const onConfirm = () => {
     setLoading(true);
+    gaEvent('send_message', {
+      browser_type: matchesSM ? 'mobile' : 'desktop',
+      category: 'contact',
+    });
     axios
       .get(
         'https://us-central1-material-ui-course-b85b7.cloudfunctions.net/sendMail',
@@ -202,8 +207,16 @@ function Contact({ setValue }) {
           content="Bringing West Coast Technology to the Midwest | Contact Us"
           key="og:title"
         />
-        <meta property="og:url" key="og:url" content="arcdevelopment-artem9.vercel.app/contact" />
-        <link rel="canonical" key="canonical" href="arcdevelopment-artem9.vercel.app/contact" />
+        <meta
+          property="og:url"
+          key="og:url"
+          content="arcdevelopment-artem9.vercel.app/contact"
+        />
+        <link
+          rel="canonical"
+          key="canonical"
+          href="arcdevelopment-artem9.vercel.app/contact"
+        />
       </Head>
       <Grid
         item
@@ -515,7 +528,14 @@ function Contact({ setValue }) {
           <Button
             variant="contained"
             className={classes.estimateButton}
-            onClick={() => setValue(5)}
+            onClick={() => {
+              setValue(5);
+              gaEvent('open_estimate', {
+                browser_type: matchesSM ? 'mobile' : 'desktop',
+                category: 'estimate',
+                from_page: window.location.pathname,
+              });
+            }}
             component={Link}
             href="/estimate"
           >

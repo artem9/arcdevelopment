@@ -1,4 +1,5 @@
 import React from 'react';
+import { event as gaEvent } from 'nextjs-google-analytics';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -56,6 +57,7 @@ const useStyles = makeStyles()((theme) => ({
 function CallToAction({ setValue }) {
   const { classes } = useStyles();
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
@@ -110,7 +112,14 @@ function CallToAction({ setValue }) {
         <Button
           variant="contained"
           className={classes.estimateButton}
-          onClick={() => setValue(5)}
+          onClick={() => {
+            setValue(5);
+            gaEvent('open_estimate', {
+              browser_type: matchesSM ? 'mobile' : 'desktop',
+              category: 'estimate',
+              from_page: window.location.pathname,
+            });
+          }}
           component={Link}
           href="/estimate"
         >
