@@ -1,15 +1,16 @@
-# Next.js example
+# Udemy: Implement High Fidelity Designs with Material-UI and ReactJS
 
-## How to use
+## Project Overview
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+This is a main website implementation from the Udemy video [course](https://www.udemy.com/course/implement-high-fidelity-designs-with-material-ui-and-reactjs/?utm_source=adwords&utm_medium=udemyads&utm_campaign=LongTail_la.EN_cc.ROW&utm_content=deal4584&utm_term=_._ag_77879424134_._ad_535397245863_._kw__._de_c_._dm__._pl__._ti_dsa-1007766171312_._li_1030422_._pd__._&matchtype=&gclid=CjwKCAiAqt-dBhBcEiwATw-ggPs1mCSNLKgih75tW0D8yPJVgVU8X2KJ2gPKP9uyMnU4xI980DB7mBoCvnkQAvD_BwE). There are some differences from the original course:
+* React 18
+* MUI 5
+* Next JS 13
+* Native lottie-web ([airbnb](https://github.com/airbnb/lottie-web))
+* Google Analytics GA4 ([nextjs-google-analytics](https://github.com/MauricioRobayo/nextjs-google-analytics))
+* Vercel production environment (ZEIT is Vercel [now](https://vercel.com/blog/zeit-is-now-vercel))
 
-<!-- #default-branch-switch -->
-
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
-cd nextjs
-```
+MUI 5 has good backward compatibility with a previous version. Documentation helped to deal with JSS [migration](https://mui.com/material-ui/migration/migrating-from-jss/#2-use-tss-react) - this is the most affected area.  
 
 Install it and run:
 
@@ -17,29 +18,6 @@ Install it and run:
 npm install
 npm run dev
 ```
+Live [demo](https://arcdevelopment-artem9.vercel.app/).
 
-or:
-
-<!-- #default-branch-switch -->
-
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/nextjs)
-
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/nextjs)
-
-## The idea behind the example
-
-The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/material-ui/guides/interoperability/#styled-components).
-
-## The link component
-
-The [example folder](https://github.com/mui/material-ui/tree/HEAD/examples/nextjs-with-typescript) provides an adapter for the use of [Next.js's Link component](https://nextjs.org/docs/api-reference/next/link) with MUI.
-More information [in the documentation](https://mui.com/material-ui/guides/routing/#next-js).
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+Thank you @zreecespieces for the great course! This is my favorite online course for web development!
