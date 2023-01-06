@@ -1,7 +1,7 @@
 import * as React from 'react';
-import ReactGA from 'react-ga4';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -10,11 +10,8 @@ import Theme from '../src/ui/Theme';
 import Header from '../src/ui/Header';
 import Footer from '../src/ui/Footer';
 
-
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
-
-ReactGA.initialize('G-Q0C90DGJZE');
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -33,6 +30,7 @@ export default function MyApp(props) {
           selectedIndex={selectedIndex}
           setSelectedIndex={setSelectedIndex}
         />
+        <GoogleAnalytics trackPageViews />
         <Component
           {...pageProps}
           setSelectedIndex={setSelectedIndex}
